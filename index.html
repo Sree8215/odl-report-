@@ -695,7 +695,7 @@
     </div>
 
 
-  <div class="reflection-item">
+<div class="reflection-item">
   <h3>8.4 Convergence of Both Paradigms</h3>
   <p>The two convergence plots tell fundamentally different stories, and understanding why they look so different is important for interpreting the results correctly.</p>
 
@@ -705,8 +705,16 @@
   <h4>GA Tetra</h4>
   <p>The Tetra convergence curve appears flat at 100 throughout all generations, which looks suspicious but is entirely expected. The Tetra web service is a ranking algorithm, not an absolute scorer. In each generation it receives the full population of candidate solutions, ranks them against each other, and returns 100 to the best individual and 0 to the worst. The GA therefore always sees its current best individual scored at 100 regardless of whether the population is improving. This means the score curve carries no information about whether the design space is being explored productively. What carries that information is the stability of the design variables across late generations. All Tetra generations from approximately generation 8 onwards return the same configuration: w=0, n near 5, d near 98 m. That stability is the convergence signal, and it is consistent with the minmax result confirming zero reclamation as the structural conclusion.</p>
 </div>
+   
+<div class="reflection-item">
+  <h3>8.5 Transferability: Would This Work Elsewhere?</h3>
+  <p>The PED methodology produced reliable results here because three conditions aligned that are not guaranteed elsewhere. Stakeholder groups were institutionally nameable and their preferences mappable onto quantifiable objectives. The primary regulatory constraint was geometrically precise rather than politically negotiable. And the design variables were genuinely continuous within a bounded feasible space. These conditions did not arise by accident; they reflect a problem that had already been substantially structured through the DPR process before this analysis began.</p>
+  <p>For the methodology to function honestly in a different context, the same three conditions must be assessed before the model is built, not after. First, can the affected stakeholder groups actually be identified and distinguished, and are the most vulnerable among them institutionally visible enough to receive a meaningful preference weight? Second, are the regulatory constraints fixed and encodable, or are they subject to discretionary interpretation that sits outside the model? Third, do the design variables have genuine degrees of freedom, or has the alternative set already been politically narrowed before the analysis begins as it was here with shaft setback?</p>
+  <p>Where all three hold, the framework transfers. Where one or more is absent, the model can still be built, but its outputs will carry assumptions that the mathematics will not flag and that only an honest problem framing will reveal.</p>
+</div>
+   
 
-    <h3>8.5 Model Limitations</h3>
+    <h3>8.6 Model Limitations</h3>
     <div class="critique-grid">
       <div class="critique-item">
         <h4>Cost function linearity</h4>
@@ -726,14 +734,14 @@
       </div>
     </div>
 
-    <h3>8.7 Ethical Dimensions</h3>
+    <h3>8.8 Ethical Dimensions</h3>
     <p><strong>Distributional asymmetry within BRH.</strong> The BRH group is modelled as homogeneous, but five-star hotel operators and daily beach food vendors are assigned equal intra-group weight. Both face construction disruption, but the hotel has legal resources to advocate while the vendor faces total livelihood disruption with no recourse. The model understates harm to the most economically vulnerable.</p>
     <p><strong>Procedural justice.</strong> The four curated alternatives were narrowed before public consultation, excluding shaft setback configurations (d≈98 m) the model identifies as significantly preferable. If affected communities were only consulted on pre-narrowed options, they were denied meaningful input into design decisions that substantially affect them.</p>
     <p><strong>Irreversibility.</strong> The model treats reclamation as a finite preference cost that can be traded against other values. Permanent coastal reclamation is irreversible. Future generations cannot recover a lost coastline. A ratio preference scale cannot capture this qualitative distinction — it is a genuine boundary on the model's scope as a decision-support tool.</p>
     <p><strong>AAI's dual role.</strong> AAI is simultaneously a stakeholder (preference weight ~17.6% normalised) and a regulatory authority with coercive power to render the Bridge infeasible. This asymmetry of one stakeholder can unilaterally reshape the feasible set and is not representable in the preference model. The MCDA's claim that A1 leads A3 by one preference point should acknowledge that AAI's regulatory position, not balanced preferences, is the decisive factor.</p>
 
     <div class="reflection-item">
-      <h3>8.8 Integrated Conspection</h3>
+      <h3>8.9 Integrated Conspection</h3>
       <p>The PED methodology works as intended at the level of structural type selection. The a-posteriori Tetra MCDA (eight scenarios) and all three paradigms of the a-priori optimisation (two model configurations) independently converge on the bored tunnel as the dominant structural choice. This cross-method convergence is strong evidence the tunnel recommendation is robust rather than an artefact of any particular modelling choice.</p>
       <p>The methodology's most significant contribution at the Section 6 level is not confirming the tunnel that the DPR consultant already recommended it, but revealing that the Tetra optimum at d=98.3 m, n=5 lanes achieves P_group=72.1, outperforming A1's 69.1. This configuration was invisible to the a-posteriori analysis because shaft setback was never treated as a design variable. The a-priori model reveals a 3-point preference improvement by exploring a dimension the curated alternatives ignored.</p>
       <p>The 2×2 model's Pareto front provides the deepest analytical underpinning: zero reclamation is always Pareto-non-dominated as a structural proof independent of calibration uncertainty or weight choice. The minmax and Tetra paradigm divergence is a direct representation of two normative positions on group decision-making. The O4 correction from the original formulation to the physically coherent one is both a methodological lesson and a substantive result and without it, the shaft setback finding disappears.</p>
