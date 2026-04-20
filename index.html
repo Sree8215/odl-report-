@@ -328,7 +328,7 @@
         <tbody>
           <tr class="rank-1"><td><strong>A1</strong></td><td><strong>Straight Tunnel</strong></td><td>Bored / NATM tunnel</td><td>Straight 4+4 lane alignment; zero beach impact; fully underground; DPR Options 5 & 6. Requires ventilation shafts near beach edge.</td><td>Complied</td><td>None</td></tr>
           <tr><td>A2</td><td>Reclamation</td><td>At-grade on reclaimed land</td><td>Lowest cost; 4+4 lanes; meets geometric standards. Permanently destroys beach, eliminates sea-views, maximum reclamation footprint, certain public opposition.</td><td>Complied</td><td>Severe (permanent)</td></tr>
-          <tr><td>A3</td><td>Bridge / Sea-link</td><td>Cable-stayed or viaduct</td><td>No beach disturbance; no reclamation; cost-competitive with tunnel. Single critical issue: conditional AAI compliance — NOC not granted at time of analysis.</td><td>Conditional</td><td>None</td></tr>
+          <tr><td>A3</td><td>Bridge / Sea-link</td><td>Cable-stayed or viaduct</td><td>No beach disturbance; no reclamation; cost-competitive with tunnel. Single critical issue: conditional AAI compliance NOC not granted at time of analysis.</td><td>Conditional</td><td>None</td></tr>
           <tr><td>A4</td><td>Cut-and-Cover Shoreline</td><td>Cut-and-cover; beach restored above</td><td>Beach restored post-construction; intermediate cost; full AAI compliance. High construction-phase beach disruption during excavation period.</td><td>Complied</td><td>None (restored)</td></tr>
         </tbody>
       </table>
@@ -413,8 +413,6 @@
     <p><strong>Two design variables:</strong> reclamation width w [0–85 m] and shaft setback distance d [15–120 m].<strong>Two objectives:</strong> O2 construction cost (BMC, weight 0.50) and O3 beach retention (BRH, weight 0.50) — the most directly conflicting pair in Section 6.</p>
 
    <img src="design_space_2x2_mumbai.png" alt="Design space contour plot" style="width:100%;height:auto;display:block;">
-   
-   <img src="pareto_front_2x2_mumbai.png" alt="Pareto front plot" style="width:100%;height:auto;display:block;">
 
     <h3>What the contour plot shows</h3>
     <p>The contour plot maps group preference P_group across every feasible combination of reclamation width w and shaft setback d simultaneously which is only possible with two design variables. Three things are immediately readable from the colour field before any optimisation is run.</p>
@@ -423,6 +421,7 @@
     <p>The feasibility boundary overlay on the right panel shows where the budget constraint and AAI height limit bind. All configurations with w greater than approximately 50 m become budget-constrained, and the dotted boundary at w=30 m marks where bridge-type structures trigger the airspace height check.</p>
 
     <h3>Pareto Front — The Structural Proof</h3>
+   <img src="pareto_front_2x2_mumbai.png" alt="Pareto front plot" style="width:90%;height:auto;display:block;">
     <p><strong>Every solution on the Pareto front has w=0.</strong>not approximately, but exactly zero. In other words, no reclamation configuration appears on the non-dominated frontier under equal weighting of BMC and BRH. This shows that, for any equal or near-equal weighting, there is always a tunnel configuration that achieves equal or lower cost while also providing equal or greater beach retention than any reclamation-based alternative. Reclamation therefore does not constitute a genuine trade-off; it is strictly dominated.</p>
     <p>This result is structural rather than sensitivity-dependent. It also explains analytically why Reclamation (A2) ranks last in every MCDA scenario. The MCDA was effectively rediscovering this Pareto dominance through changes in numerical weights, whereas the 2×2 model demonstrates the same conclusion directly in geometric terms.</p>
     <h3>Optimisation Results and the Key Limitation</h3>
