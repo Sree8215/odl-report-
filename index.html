@@ -423,7 +423,7 @@
 
     <h3>Purpose and Structure</h3>
     <p>The 2×2 model is primarily valuable for analytical and visual purposes. Because it contains only two design variables, the entire design space can be represented as a contour plot and the full Pareto frontier can be computed explicitly. Such complete visualisation and exhaustive representation are not possible in the full four-dimensional model.</p>
-    <p><strong>Two design variables:</strong> reclamation width w [0–85 m] and shaft setback distance d [15–120 m].<strong>Two objectives:</strong> O2 construction cost (BMC, weight 0.50) and O3 beach retention (BRH, weight 0.50) — the most directly conflicting pair in Section 6.</p>
+    <p><strong>Two design variables:</strong> reclamation width w [0–85 m] and shaft setback distance d [15–120 m].<strong>Two objectives:</strong> O2 construction cost (BMC, weight 0.50) and O3 beach retention (BRH, weight 0.50) the most directly conflicting pair in Section 6.</p>
 
    <img src="design_space_2x2_mumbai.png" alt="Design space contour plot" style="width:100%;height:auto;display:block;">
 
@@ -460,7 +460,7 @@
     <div class="rs-note">minmax · Tetra · scipy WM</div>
   </div>
 </div>
-    <p><p>All three paradigms converge on the same result: zero reclamation and the minimum feasible shaft setback. The w=0 result is the central finding — confirmed analytically by the Pareto front and numerically by all three aggregation approaches. The d=15 m result is equally correct within the scope of this model: with construction cost penalising every additional metre of setback and neither objective rewarding it, the optimiser places the shaft as close to the beach as the constraint allows.</p>
+    <p><p>All three paradigms converge on the same result: zero reclamation and the minimum feasible shaft setback. The w=0 result is the central finding confirmed analytically by the Pareto front and numerically by all three aggregation approaches. The d=15 m result is equally correct within the scope of this model: with construction cost penalising every additional metre of setback and neither objective rewarding it, the optimiser places the shaft as close to the beach as the constraint allows.</p>
 
   <img src="sensitivity_2x2_mumbai.png" alt="Sensitivity Analysis plot" style="width:100%;height:auto;display:block;">
 
@@ -532,21 +532,21 @@
     </div>
 
     <h3>Preference Functions</h3>
-    <p>Each raw objective value is converted to a Tetra ratio-scale preference score P ∈ [0, 100] using three calibration points and PCHIP (Piecewise Cubic Hermite Interpolating Polynomial) interpolation — guaranteed monotone, non-overshooting. All functions are clipped to [0, 100] to prevent extrapolation beyond calibration bounds. For inverted objectives (O2, O5, O6), x-values are listed ascending with y-values reversed.</p>
+    <p>Each raw objective value is converted to a Tetra ratio-scale preference score P ∈ [0, 100] using three calibration points and PCHIP (Piecewise Cubic Hermite Interpolating Polynomial) interpolation guaranteed monotone, non-overshooting. All functions are clipped to [0, 100] to prevent extrapolation beyond calibration bounds. For inverted objectives (O2, O5, O6), x-values are listed ascending with y-values reversed.</p>
 
     <img src="preference_curves_mumbai.png" alt="Preference curve for all objectives" style="width:100%;height:auto;display:block;">
 
     <h3>Weights and Constraints</h3>
 
     <h4>Stakeholder weights</h4>
-    <p>The three preference-bearing stakeholder groups receive global weights reflecting their relative claims on the design outcome. BMC and BRH are weighted equally at 0.30 each — BMC holds institutional project authority while BRH holds the largest public legitimacy claim on the affected asset, and no methodological basis exists for treating one as more important than the other in the absence of a formal political decision. ENV receives 0.25, reflecting its statutory regulatory role which is significant but narrower in scope than the other two groups. The Airport Authority of India is not assigned a preference weight at all — its compliance requirement is binary and non-negotiable, making it a hard engineering constraint rather than a tradeable preference.</p>
+    <p>The three preference-bearing stakeholder groups receive global weights reflecting their relative claims on the design outcome. BMC and BRH are weighted equally at 0.30 each. BMC holds institutional project authority while BRH holds the largest public legitimacy claim on the affected asset, and no methodological basis exists for treating one as more important than the other in the absence of a formal political decision. ENV receives 0.25, reflecting its statutory regulatory role which is significant but narrower in scope than the other two groups. The Airport Authority of India is not assigned a preference weight at all — its compliance requirement is binary and non-negotiable, making it a hard engineering constraint rather than a tradeable preference.</p>
 
     <h4>Sub-criterion weights and normalisation</h4>
     <p>Within each stakeholder group, the two criteria are weighted to reflect their relative importance. For BMC, throughput carries 0.55 and cost carries 0.45 where capacity is the primary mandate of the project, but cost discipline is a close secondary concern. For BRH, beach preservation carries 0.60 and sea-view carries 0.40 where permanent beach loss is the dominant public concern, while sea-view obstruction is important but recoverable in part. For ENV, reclamation footprint and construction disturbance are weighted equally at 0.50 each.</p>
     <p>Multiplying the global and sub-criterion weights produces effective weights that sum to 0.85 rather than 1.0 because AAI's share is handled as a constraint, not a weight. The GA aggregator requires weights summing to exactly 1.0, so all effective weights are divided by 0.85 before being passed to the objective function. This preserves every relative priority exactly while satisfying the technical requirement.</p>
 
 <h4>Design constraints</h4>
-<p>Five constraints bound the feasible design space. The lane count lower bound (at least three lanes per direction) comes directly from the MCRP project mandate and is encoded as a simple inequality on the lane count variable. Span length and reclamation width limits are enforced through variable bounds. The AAI Obstacle Limitation Surface constraint applies only to bridge or elevated-structure configurations — defined as those where reclamation width exceeds 30 m — and requires the modelled deck height to stay below 18 m above Mean Sea Level. This is encoded as a smooth product function that equals zero for all tunnel solutions, activating only for bridge configurations. The budget constraint requires that total construction cost — unit cost per kilometre multiplied by span length — does not exceed INR 4,200 crore for Section 6.</p>
+<p>Five constraints bound the feasible design space. The lane count lower bound (at least three lanes per direction) comes directly from the MCRP project mandate and is encoded as a simple inequality on the lane count variable. Span length and reclamation width limits are enforced through variable bounds. The AAI Obstacle Limitation Surface constraint applies only to bridge or elevated-structure configurations are defined as those where reclamation width exceeds 30 m and requires the modelled deck height to stay below 18 m above Mean Sea Level. This is encoded as a smooth product function that equals zero for all tunnel solutions, activating only for bridge configurations. The budget constraint requires that total construction cost ia unit cost per kilometre multiplied by span length and does not exceed INR 4,200 crore for Section 6.</p>
     <h3>Three Optimisation Paradigms</h3>
     <div class="paradigm-compare">
       <div class="paradigm-card">
