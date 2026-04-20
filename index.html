@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CME4481 – Mumbai Coastal Road Section 6 | ODL Response</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0f2d48; --navy-mid: #1a4a72; --navy-light: #2d6a9f;
+    --gold: #b07d3a; --gold-light: #e8d5b0; --gold-pale: #f7f0e3;
+    --cream: #faf8f4; --text: #1c1c1c; --muted: #6b6b6b;
+    --border: #ddd8cf; --white: #ffffff;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color: var(--text); font-size: 16px; line-height: 1.75; -webkit-font-smoothing: antialiased; }
+
+  nav { position: sticky; top: 0; z-index: 200; background: rgba(15,45,72,0.97); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 58px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .nav-brand { font-family: 'Playfair Display', serif; color: rgba(255,255,255,0.9); font-size: 14px; letter-spacing: 0.03em; white-space: nowrap; }
+  .nav-links { display: flex; gap: 6px; }
+  .nav-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 10px; border-radius: 3px; transition: color 0.2s, background 0.2s; }
+  .nav-links a:hover { color: var(--gold-light); background: rgba(255,255,255,0.05); }
+
+  .hero { background: linear-gradient(155deg, #081e33 0%, #0f2d48 45%, #1a4264 100%); padding: 100px 48px 90px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,255,255,0.012) 40px, rgba(255,255,255,0.012) 80px); }
+  .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+  .hero-inner { max-width: 900px; margin: 0 auto; position: relative; }
+  .hero-eyebrow { display: flex; gap: 12px; align-items: center; margin-bottom: 28px; flex-wrap: wrap; }
+  .badge { display: inline-block; background: rgba(176,125,58,0.18); color: var(--gold-light); border: 1px solid rgba(176,125,58,0.4); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 13px; border-radius: 2px; font-weight: 500; }
+  .badge.blue { background: rgba(45,106,159,0.25); color: #8bb8db; border-color: rgba(45,106,159,0.4); }
+  .hero h1 { font-family: 'Playfair Display', serif; color: #fff; font-size: clamp(26px, 4.5vw, 46px); font-weight: 500; line-height: 1.18; max-width: 820px; margin-bottom: 14px; }
+  .hero h1 em { font-style: italic; color: var(--gold-light); }
+  .hero-sub { color: rgba(255,255,255,0.55); font-weight: 300; font-size: 17px; max-width: 680px; margin-bottom: 44px; }
+  .hero-meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0; border: 1px solid rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; }
+  .meta-item { padding: 16px 22px; border-right: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .meta-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 5px; }
+  .meta-value { font-size: 13px; color: rgba(255,255,255,0.82); font-weight: 400; }
+
+  .toc-bar { background: var(--navy); padding: 0 48px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; gap: 0; overflow-x: auto; }
+  .toc-bar a { color: rgba(255,255,255,0.45); text-decoration: none; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; padding: 14px 16px; white-space: nowrap; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; }
+  .toc-bar a:hover { color: var(--gold-light); border-color: var(--gold); }
+
+  .container { max-width: 940px; margin: 0 auto; padding: 0 48px; }
+  section { padding: 80px 0; }
+  section + section { border-top: 1px solid var(--border); }
+  .section-eyebrow { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
+  .section-number { font-family: 'Playfair Display', serif; font-size: 13px; color: var(--gold); letter-spacing: 0.1em; }
+  .section-label-text { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+  .gold-rule { width: 40px; height: 2px; background: var(--gold); margin-bottom: 24px; }
+  h2 { font-family: 'Playfair Display', serif; font-size: clamp(22px, 3vw, 34px); font-weight: 500; color: var(--navy); line-height: 1.2; margin-bottom: 22px; }
+  h3 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 500; color: var(--navy); margin: 36px 0 14px; }
+  h4 { font-size: 14px; font-weight: 600; color: var(--navy); letter-spacing: 0.05em; text-transform: uppercase; margin: 28px 0 10px; }
+  p { color: #3a3a3a; margin-bottom: 16px; font-weight: 300; }
+  p:last-child { margin-bottom: 0; }
+  strong { font-weight: 600; color: var(--text); }
+  ul, ol { margin: 0 0 20px 0; padding-left: 24px; }
+  li { color: #3a3a3a; font-weight: 300; margin-bottom: 8px; }
+  li strong { font-weight: 600; }
+
+  .summary-box { background: var(--navy); color: #fff; padding: 44px 48px; margin: 0 0 56px; position: relative; }
+  .summary-box::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--gold); }
+  .summary-box h2 { color: #fff; margin-bottom: 20px; }
+  .summary-box p { color: rgba(255,255,255,0.72); font-weight: 300; }
+  .summary-box strong { color: rgba(255,255,255,0.95); }
+  .summary-finding { background: rgba(176,125,58,0.15); border: 1px solid rgba(176,125,58,0.3); padding: 16px 20px; margin: 24px 0; border-left: 3px solid var(--gold); }
+  .summary-finding p { color: var(--gold-light); margin: 0; font-weight: 400; }
+
+  .problem-box { background: var(--gold-pale); border: 1px solid #e0d3b8; border-left: 4px solid var(--gold); padding: 28px 32px; margin: 28px 0; }
+  .problem-box p { color: #4a3a1a; margin-bottom: 10px; font-weight: 300; }
+  .problem-box strong { color: #3a2a10; }
+
+  .info-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 28px; }
+  .info-card { background: var(--white); border: 1px solid var(--border); border-left: 3px solid var(--gold); padding: 18px 20px; }
+  .info-card dt { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
+  .info-card dd { font-weight: 500; color: var(--navy); font-size: 14px; }
+
+  .table-wrap { overflow-x: auto; margin: 28px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; background: var(--white); }
+  thead { background: var(--navy); }
+  thead th { padding: 12px 16px; text-align: left; color: rgba(255,255,255,0.85); font-weight: 500; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; border-right: 1px solid rgba(255,255,255,0.08); }
+  thead th:last-child { border-right: none; }
+  tbody tr { border-bottom: 1px solid var(--border); }
+  tbody tr:hover { background: #f5f2ec; }
+  tbody td { padding: 11px 16px; color: #3a3a3a; font-weight: 300; border-right: 1px solid var(--border); vertical-align: top; }
+  tbody td:last-child { border-right: none; }
+  tbody td strong { font-weight: 600; color: var(--navy); }
+  .rank-1 { background: rgba(15,45,72,0.06); font-weight: 600; color: var(--navy) !important; }
+  .td-opt { background: rgba(176,125,58,0.08); }
+  .td-best { background: rgba(15,45,72,0.06); font-weight: 600; }
+
+  .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin: 28px 0; }
+  .chart-card { background: var(--white); border: 1px solid var(--border); padding: 28px; }
+  .chart-card h3 { font-size: 16px; margin: 0 0 4px; font-family: 'Playfair Display', serif; color: var(--navy); }
+  .chart-card .chart-sub { font-size: 13px; color: var(--muted); margin-bottom: 22px; font-weight: 300; }
+  .chart-card-full { background: var(--white); border: 1px solid var(--border); padding: 32px; margin: 28px 0; }
+  .chart-card-full h3 { font-size: 18px; margin: 0 0 4px; font-family: 'Playfair Display', serif; color: var(--navy); }
+  .chart-card-full .chart-sub { font-size: 13px; color: var(--muted); margin-bottom: 24px; font-weight: 300; }
+
+  .figure-placeholder { border: 2px dashed var(--border); background: #f8f6f1; padding: 48px 24px; text-align: center; margin: 28px 0; position: relative; }
+  .figure-placeholder .fig-icon { width: 48px; height: 48px; margin: 0 auto 16px; background: var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .figure-placeholder .fig-title { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+  .figure-placeholder .fig-desc { font-size: 13px; color: var(--muted); font-weight: 300; max-width: 480px; margin: 0 auto 16px; }
+  .fig-instructions { display: inline-block; background: var(--navy); color: rgba(255,255,255,0.8); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; padding: 7px 16px; border-radius: 2px; font-weight: 500; }
+
+  .stakeholder-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 28px 0; }
+  .stakeholder-card { background: var(--white); border: 1px solid var(--border); padding: 22px; }
+  .stakeholder-card .sh-label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; font-weight: 600; }
+  .stakeholder-card h4 { font-size: 14px; text-transform: none; letter-spacing: 0; color: var(--navy); margin: 0 0 10px; font-weight: 600; }
+  .stakeholder-card p { font-size: 14px; margin: 0; color: #4a4a4a; }
+
+  .var-table { width: 100%; border-collapse: collapse; font-size: 14px; background: var(--white); margin: 24px 0; }
+  .var-table thead { background: var(--gold); }
+  .var-table thead th { padding: 11px 14px; color: #fff; font-weight: 500; font-size: 12px; letter-spacing: 0.05em; text-align: left; }
+  .var-table tbody tr { border-bottom: 1px solid var(--border); }
+  .var-table tbody td { padding: 12px 14px; font-weight: 300; color: #3a3a3a; vertical-align: top; font-size: 13px; }
+  .var-table tbody td:first-child { font-family: 'Playfair Display', serif; font-weight: 500; color: var(--navy); font-size: 14px; }
+
+  .result-callout { background: linear-gradient(135deg, var(--navy) 0%, #1a4264 100%); padding: 40px 44px; margin: 36px 0; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 0; }
+  .result-stat { padding: 0 24px; border-right: 1px solid rgba(255,255,255,0.1); }
+  .result-stat:first-child { padding-left: 0; }
+  .result-stat:last-child { border-right: none; }
+  .result-stat .rs-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 8px; }
+  .result-stat .rs-value { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--gold-light); font-weight: 500; margin-bottom: 4px; }
+  .result-stat .rs-note { font-size: 12px; color: rgba(255,255,255,0.5); }
+
+  .reflection-item { border-left: 3px solid var(--gold); padding: 0 0 0 24px; margin: 32px 0; }
+  .reflection-item h3 { font-size: 18px; margin: 0 0 12px; }
+
+  .critique-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+  .critique-item { background: #fff8f5; border: 1px solid #f0d8c8; border-top: 3px solid #c85a30; padding: 20px; }
+  .critique-item h4 { font-size: 13px; color: #7a3015; margin-bottom: 8px; text-transform: none; letter-spacing: 0; }
+  .critique-item p { font-size: 14px; color: #5a3020; margin: 0; }
+
+  .paradigm-compare { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; margin: 28px 0; }
+  .paradigm-card { background: var(--white); border: 1px solid var(--border); border-top: 3px solid var(--navy); padding: 22px; }
+  .paradigm-card.gold { border-top-color: var(--gold); }
+  .paradigm-card.green { border-top-color: #2d7a4a; }
+  .paradigm-card .pc-label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; font-weight: 600;}
+  .paradigm-card h4 { font-size: 15px; text-transform: none; letter-spacing: 0; color: var(--navy); margin: 0 0 14px; font-weight: 600; }
+  .paradigm-card .pc-stat { margin-bottom: 6px; font-size: 13px; color: #4a4a4a; font-weight: 300; }
+  .paradigm-card .pc-score { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--gold); font-weight: 500; margin-top: 14px; }
+
+  .note-box { background: var(--gold-pale); border: 1px solid #e0d3b8; border-left: 4px solid var(--gold); padding: 18px 22px; margin: 20px 0; font-size: 14px; color: #4a3a1a; font-weight: 300; }
+  .note-box strong { color: #3a2a10; }
+
+  .obj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+  .obj-card { background: var(--white); border: 1px solid var(--border); padding: 20px; }
+  .obj-card .obj-code { font-family: monospace; font-size: 12px; background: var(--navy); color: var(--gold-light); padding: 2px 8px; border-radius: 2px; margin-bottom: 8px; display: inline-block; }
+  .obj-card h4 { font-size: 13px; text-transform: none; letter-spacing: 0; color: var(--navy); margin: 8px 0 6px; font-weight: 600; }
+  .obj-card .obj-formula { font-family: monospace; font-size: 12px; background: #f0ede7; padding: 8px 12px; color: var(--navy-mid); margin: 8px 0; }
+  .obj-card p { font-size: 13px; color: #4a4a4a; margin: 0; }
+
+  footer { background: #07192a; padding: 32px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  footer p { color: rgba(255,255,255,0.3); font-size: 12px; margin: 0; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-inner > * { animation: fadeUp 0.55s ease both; }
+  .hero-eyebrow { animation-delay: 0.05s; } .hero h1 { animation-delay: 0.15s; } .hero-sub { animation-delay: 0.22s; } .hero-meta-grid { animation-delay: 0.30s; }
+
+  @media (max-width: 720px) {
+    nav { padding: 0 20px; } .nav-links { display: none; } .container { padding: 0 24px; } .hero { padding: 60px 24px; }
+    .info-cards, .stakeholder-grid, .chart-grid, .critique-grid, .obj-grid, .paradigm-compare { grid-template-columns: 1fr; }
+    .result-callout { grid-template-columns: 1fr 1fr; gap: 24px; } .result-stat { border-right: none; padding: 0; }
+    footer { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <span class="nav-brand">CME4481 — Mumbai Coastal Road · Section 6</span>
+  <div class="nav-links">
+    <a href="#summary">Summary</a>
+    <a href="#intro">Introduction</a>
+    <a href="#stakeholders">Stakeholders</a>
+    <a href="#alternatives">Alternatives</a>
+    <a href="#mcda">MCDA</a>
+    <a href="#model2x2">2×2 Model</a>
+    <a href="#fullmodel">Full Model</a>
+    <a href="#results">Results</a>
+    <a href="#reflection">Reflection</a>
+    <a href="#conclusion">Conclusion</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span class="badge">CME4481 · Q3 2026</span>
+      <span class="badge blue">ODL Response</span>
+      <span class="badge">TU Delft · Faculty ABE</span>
+    </div>
+    <h1>Mumbai Coastal Road Project<br><em>Section 6: Juhu Sea Side Garden to Versova</em></h1>
+    <p class="hero-sub">A Preference-Based Engineering Design analysis applying the six-step PED methodology, Tetra MCDA, preliminary 2×2 model, and full four-variable six-objective optimisation across three aggregation paradigms.</p>
+    <div class="hero-meta-grid">
+      <div class="meta-item"><div class="meta-label">System of Interest</div><div class="meta-value">Mumbai Coastal Road – Section 6 (~3.2 km)</div></div>
+      <div class="meta-item"><div class="meta-label">Methodology</div><div class="meta-value">PED / Tetra SDM + GA Optimisation</div></div>
+      <div class="meta-item"><div class="meta-label">Models</div><div class="meta-value">2×2 Preliminary + Full 4×6</div></div>
+      <div class="meta-item"><div class="meta-label">Paradigms</div><div class="meta-value">GA minmax · GA Tetra · Scipy WM</div></div>
+      <div class="meta-item"><div class="meta-label">Date</div><div class="meta-value">April 2026</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── TOC ── -->
+<nav class="toc-bar">
+  <a href="#summary">0 · Summary</a>
+  <a href="#intro">1 · Introduction</a>
+  <a href="#stakeholders">2 · Stakeholders</a>
+  <a href="#alternatives">3 · Alternatives</a>
+  <a href="#mcda">4 · MCDA</a>
+  <a href="#model2x2">5 · 2×2 Model</a>
+  <a href="#fullmodel">6 · Full Model</a>
+  <a href="#results">7 · Results</a>
+  <a href="#reflection">8 · Reflection</a>
+  <a href="#conclusion">9 · Conclusion</a>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- 0. MANAGEMENT SUMMARY -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<section id="summary">
+  <div class="container">
+    <div class="summary-box">
+      <h2>0. Management Summary</h2>
+      <p>The Mumbai Coastal Road Project spans 29.2 km along Mumbai's western seafront. Section 6 — approximately 3.2 km from Juhu Sea Side Garden to Versova — is the most contested stretch, passing adjacent to Juhu Beach (~50,000 visitors/day), within the Juhu Aerodrome Obstacle Limitation Surface (OLS), and through a CRZ-II coastal regulation zone. Four structurally conflicting stakeholder groups are identified: BMC/Transport Planners, Beach Users/Residents/Hoteliers (BRH), Environmental/Coastal stakeholders (ENV), and the Airport Authority of India (AAI).</p>
+      <p>Eight Tetra SDM sensitivity scenarios confirm the <strong>Straight Tunnel (A1)</strong> as the preferred MCDA alternative in six of eight scenarios. The Bridge (A3) leads only when BMC weight reaches 0.60–0.65. Reclamation (A2) is last in every scenario without exception.</p>
+      <div class="summary-finding">
+        <p><strong>Pareto finding (2×2 model):</strong> Zero reclamation (w=0) is always Pareto-non-dominated. No reclamation configuration appears on the non-dominated frontier under any equal weighting of BMC and BRH — making the tunnel recommendation structurally provable, not merely argued.</p>
+      </div>
+      <p>The full model under <strong>GA Tetra (a_fine)</strong> achieves P_group = 72.1/100 — exceeding the best MCDA alternative A1 (69.1) by 3.0 points. It finds zero reclamation, five lanes, a span of 2.571 km, and a shaft setback of 98.3 m — nearly four times the DPR's implicit minimum of 25 m. The shaft setback is the original contribution of the a-priori approach: a continuous design dimension entirely absent from all four curated MCDA alternatives.</p>
+      <div class="summary-finding">
+        <p><strong>Key paradigm divergence:</strong> GA minmax → d=15 m, P_group=46.6 (equitable floor). GA Tetra → d=98.3 m, P_group=72.1 (aggregate optimum, beats A1). Both are valid — they represent different normative positions on group decision-making.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- 1. INTRODUCTION -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<section id="intro">
+  <div class="container">
+    <div class="section-eyebrow"><span class="section-number">01</span><span class="section-label-text">Introduction</span></div>
+    <div class="gold-rule"></div>
+    <h2>Introduction and System of Interest</h2>
+
+    <h3>Background</h3>
+    <p>Mumbai's western coastal corridor is one of the city's most acute infrastructure bottlenecks. The Western Express Highway and S.V. Road operate at chronic congestion, with peak-hour journey times exceeding 90 minutes for a 20 km distance. The MCRP — a 29.2 km dedicated coastal expressway from Marine Lines to Kandivali — is the strategic response, developed by the DPR consultant and reviewed by a Peer Review Committee of the Government of Maharashtra.</p>
+    <p>Section 6, from Juhu Sea Side Garden to Versova (~3.2 km), is the most technically and socially complex segment. Three simultaneous constraints converge: Juhu Beach lies immediately adjacent, the Juhu Aerodrome OLS sits overhead, and the CRZ-II coastal regulation boundary governs the foreshore.</p>
+
+    <h3>Why Section 6 is the Right System of Interest</h3>
+    <p>Every SoI criterion from the CME4481 syllabus is satisfied: real infrastructure in active design/procurement; at least four stakeholder groups with formally documented conflicting interests; all design variables continuous and non-binary; ample official documentation through the Government of Maharashtra Peer Review Report, BMC project files, CRZ environmental assessments, and public consultation records.</p>
+
+    <h3>Vague Societal Needs</h3>
+    <ul>
+      <li>Decongest western Mumbai's road network — journey times of 90 minutes for 20 km impose structural economic costs across the western suburbs</li>
+      <li>Preserve Juhu Beach as a genuine public resource accessible to all socioeconomic groups — approximately 50,000 daily visitors depend on it for recreation and livelihood</li>
+      <li>Protect the Juhu Aerodrome airspace against structures that would compromise runway operations, particularly given the proposed runway extension</li>
+      <li>Minimise permanent reclamation of the Arabian Sea coastline — a concern heightened by significant reclamation elsewhere on the MCRP corridor</li>
+      <li>Deliver a financially viable solution within the Section 6 budget cap of INR 4,200 crore</li>
+    </ul>
+
+    <h3>Formal Problem Definition</h3>
+    <div class="problem-box">
+      <p><strong>Given:</strong> Section 6 alignment, approximately 3.2 km, Juhu Sea Side Garden to Versova, within the broader MCRP corridor.</p>
+      <p><strong>Subject to:</strong> Minimum 3 lanes per direction (project mandate); AAI OLS height restrictions; CRZ Notification 2019 maximum 85 m reclamation; total budget cap INR 4,200 crore.</p>
+      <p><strong>Find:</strong> Design variable vector x = [L, n, w, d] that maximises overall group preference score P_group(x) across all stakeholder groups.</p>
+      <p><strong>Such that:</strong> All physical, regulatory, and financial constraints are satisfied.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- 2. STAKEHOLDERS -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<section id="stakeholders">
+  <div class="container">
+    <div class="section-eyebrow"><span class="section-number">02</span><span class="section-label-text">Stakeholder Analysis</span></div>
+    <div class="gold-rule"></div>
+    <h2>Stakeholder Analysis</h2>
+
+    <div class="stakeholder-grid">
+      <div class="stakeholder-card">
+        <div class="sh-label">BMC · Global weight 0.30</div>
+        <h4>Transport Planners / Project Owner</h4>
+        <p>Responsible for corridor capacity, geometric standards, construction feasibility, and cost. Core objective: maximise throughput (PCU/hr) at minimum cost. The DPR evaluation criterias are design speed compliance, lane count, relative cost that directly operationalise BMC's goals. Also bears political risk of alternatives attracting sustained legal challenge.</p>
+      </div>
+      <div class="stakeholder-card">
+        <div class="sh-label">BRH · Global weight 0.30</div>
+        <h4>Beach Users, Residents & Hoteliers</h4>
+        <p>~50,000 daily beach visitors, Juhu-Versova residents, and hotel operators. Represented through public objections to BMC and MCZMA. The Peer Review explicitly notes reclamation options may invite objections. Contains actors with vastly different economic power like five-star hotels and daily beach vendors. Both of these actors are modelled with equal intra-group weight (discussed in reflection).</p>
+      </div>
+      <div class="stakeholder-card">
+        <div class="sh-label">ENV · Global weight 0.25</div>
+        <h4>Environmental & Coastal Stakeholders</h4>
+        <p>Maharashtra Coastal Zone Management Authority (MCZMA) as CRZ regulatory body, environmental NGOs, and coastal scientists concerned with the Juhu–Versova littoral zone. Statutory authority to condition or reject construction violating CRZ provisions. Core objective: minimise permanent reclamation footprint and construction-phase coastal ecological disturbance.</p>
+      </div>
+      <div class="stakeholder-card">
+        <div class="sh-label">AAI · Modelled as hard constraint</div>
+        <h4>Airport Authority of India</h4>
+        <p>Regulator of Juhu Aerodrome (VAJJ). Proposed runway extension creates an OLS that caps structure height. The Peer Review explicitly notes the bridge alternative "depends on aviation clearance because of the proposed Juhu runway extension." AAI's position is binary that is comply or infeasible and is therefore modelled as a hard engineering constraint rather than a weighted preference objective.</p>
+      </div>
+    </div>
+
+    <h3>Conflict Mapping</h3>
+    <p>The conflicts discussed in Section 6 are not incidental; they are structural in nature, arising from the physical co-location of land uses that are fundamentally incompatible. The most significant conflict is between BMC and BRH/ENV regarding reclamation. Although reclamation represents the least-cost solution for BMC, it would result in the permanent loss of the beach as an asset and cause irreversible damage to the coastal ecosystem. In other words, the cost savings achieved by BMC through reclamation come directly at the expense of the environmental and recreational values prioritized by BRH and ENV.A second conflict emerges between BMC and AAI in relation to the bridge option. While this alternative is relatively cost-competitive, its feasibility remains uncertain because it is contingent upon obtaining a No Objection Certificate (NOC), which has not yet been resolved. As a result, the option remains institutionally constrained despite its economic attractiveness.A third, more continuous conflict exists between BMC’s preference for locating shafts as close as possible to the beach edge, in order to minimize costs through shorter adits, and the preference of BRH/ENV for greater shaft setbacks to reduce visual intrusion and construction-related disturbance. Among these conflicts, it is this third one that is directly addressed and resolved through the a priori optimisation model.<p></p>
+    <div class="figure-placeholder">
+      <div class="fig-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg></div>
+      <div class="fig-title">Figure 1 — Stakeholder Conflict Map</div>
+      <div class="fig-desc">Insert your stakeholder conflict matrix or influence/interest diagram here showing which groups oppose each alternative and which conflicts are structural vs contingent.</div>
+      <span class="fig-instructions">→ Replace with: &lt;img src="fig1_stakeholder_map.png" alt="Stakeholder conflict map" style="width:100%;height:auto;"&gt;</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- 3. ALTERNATIVES -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<section id="alternatives">
+  <div class="container">
+    <div class="section-eyebrow"><span class="section-number">03</span><span class="section-label-text">Design Alternatives</span></div>
+    <div class="gold-rule"></div>
+    <h2>Design Alternatives — A-Posteriori Curated Set</h2>
+    <p>The four alternatives are drawn directly from official DPR and Peer Review Committee documentation. They form the a-posteriori curated set from which the MCDA selects before the a-priori models open the continuous design space.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Alt.</th><th>Name</th><th>Type</th><th>Key Features</th><th>AAI</th><th>Beach Impact</th></tr></thead>
+        <tbody>
+          <tr class="rank-1"><td><strong>A1</strong></td><td><strong>Straight Tunnel</strong></td><td>Bored / NATM tunnel</td><td>Straight 4+4 lane alignment; zero beach impact; fully underground; DPR Options 5 & 6. Requires ventilation shafts near beach edge.</td><td>Complied</td><td>None</td></tr>
+          <tr><td>A2</td><td>Reclamation</td><td>At-grade on reclaimed land</td><td>Lowest cost; 4+4 lanes; meets geometric standards. Permanently destroys beach, eliminates sea-views, maximum reclamation footprint, certain public opposition.</td><td>Complied</td><td>Severe (permanent)</td></tr>
+          <tr><td>A3</td><td>Bridge / Sea-link</td><td>Cable-stayed or viaduct</td><td>No beach disturbance; no reclamation; cost-competitive with tunnel. Single critical issue: conditional AAI compliance — NOC not granted at time of analysis.</td><td>Conditional</td><td>None</td></tr>
+          <tr><td>A4</td><td>Cut-and-Cover Shoreline</td><td>Cut-and-cover; beach restored above</td><td>Beach restored post-construction; intermediate cost; full AAI compliance. High construction-phase beach disruption during excavation period.</td><td>Complied</td><td>None (restored)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="figure-placeholder">
+      <div class="fig-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+      <div class="fig-title">Figure 2 — Section 6 Alignment Map / Alternative Cross-Sections</div>
+      <div class="fig-desc">Insert plan view of Section 6 showing all four alternatives or cross-section drawings comparing structural types. Referenced from DPR documentation.</div>
+      <span class="fig-instructions">→ Replace with: &lt;img src="fig2_alignment.png" alt="Section 6 alignment" style="width:100%;height:auto;"&gt;</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- 4. MCDA -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<section id="mcda">
+  <div class="container">
+    <div class="section-eyebrow"><span class="section-number">04</span><span class="section-label-text">A-Posteriori MCDA</span></div>
+    <div class="gold-rule"></div>
+    <h2>Multi-Criteria Decision Analysis — Tetra SDM</h2>
+
+    <h3>Evaluation Criteria and Weights</h3>
+    <p>Six criteria are defined — two per preference-bearing stakeholder group. The Tetra ratio preference scale is used throughout, enabling arithmetically valid aggregation — the foundational distinction from classical MCDA methods where ordinal scales make such arithmetic technically indefensible.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Criterion</th><th>Stakeholder</th><th>Sub-weight</th><th>Eff. weight</th><th>Direction</th></tr></thead>
+        <tbody>
+          <tr><td>C1: Lane capacity & design speed</td><td>BMC</td><td>0.55</td><td>0.165</td><td>Maximise</td></tr>
+          <tr><td>C2: Construction cost efficiency</td><td>BMC</td><td>0.45</td><td>0.135</td><td>Max (inverted)</td></tr>
+          <tr><td>C3: Beach preservation (%)</td><td>BRH</td><td>0.60</td><td>0.180</td><td>Maximise</td></tr>
+          <tr><td>C4: Sea-view preservation</td><td>BRH</td><td>0.40</td><td>0.120</td><td>Maximise</td></tr>
+          <tr><td>C5: Reclamation footprint</td><td>ENV</td><td>0.50</td><td>0.125</td><td>Max (inverted)</td></tr>
+          <tr><td>C6: Construction coastal disturbance</td><td>ENV</td><td>0.50</td><td>0.125</td><td>Max (inverted)</td></tr>
+          <tr><td>AAI compliance</td><td>AAI</td><td>—</td><td>Hard constraint</td><td>Binary</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Eight Sensitivity Scenarios</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Scenario</th><th>BMC wt</th><th>BRH wt</th><th>ENV wt</th><th>Rank 1</th><th>Rank 2</th><th>Key finding</th></tr></thead>
+        <tbody>
+          <tr class="rank-1"><td>test0 (base equal)</td><td>0.45</td><td>0.45</td><td>0.10</td><td><strong>A1 Tunnel</strong></td><td>A3 Bridge</td><td>Baseline</td></tr>
+          <tr><td>test1 (BMC heavy)</td><td>0.65</td><td>0.25</td><td>0.10</td><td>A3 Bridge</td><td>A1 Tunnel</td><td>A3 leads on cost; A1 near-tie</td></tr>
+          <tr class="rank-1"><td>test2 (BRH heavy)</td><td>0.25</td><td>0.65</td><td>0.10</td><td><strong>A1 Tunnel</strong></td><td>A3 Bridge</td><td>Beach weight confirms tunnel</td></tr>
+          <tr class="rank-1"><td>test3 (AAI heavy)</td><td>0.35</td><td>0.35</td><td>0.30</td><td><strong>A1 Tunnel</strong></td><td>A4 Cut-Cover</td><td>AAI amplifies bridge penalty</td></tr>
+          <tr class="rank-1"><td>test4 (+ENV)</td><td>0.35</td><td>0.35</td><td>+ENV</td><td><strong>A1 Tunnel</strong></td><td>A3 Bridge</td><td>ENV adds to tunnel advantage</td></tr>
+          <tr class="rank-1"><td>test5 (equal four)</td><td>0.40</td><td>0.40</td><td>+AAI</td><td><strong>A1 Tunnel</strong></td><td>A3 Bridge</td><td>Robust to equal weighting</td></tr>
+          <tr><td>test6 (Mumbai BMC)</td><td>0.60</td><td>0.20</td><td>0.20</td><td>A3 Bridge</td><td>A1 Tunnel</td><td>Cost + capacity flips ranking</td></tr>
+          <tr class="rank-1"><td>test7 (Mumbai BRH)</td><td>0.20</td><td>0.60</td><td>0.20</td><td><strong>A1 Tunnel</strong></td><td>A3 Bridge</td><td>Beach weight confirms tunnel</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="chart-card-full">
+      <h3>MCDA Sensitivity — P_group by Scenario</h3>
+      <p class="chart-sub">Normalised group preference scores for A1–A4 across all eight Tetra SDM weight scenarios</p>
+      <canvas id="mcdaChart" height="80"></canvas>
+    </div>
+
+    <h3>A-Posteriori Limitation</h3>
+    <p>The MCDA framework selects from four predefined alternatives, but it does not examine whether any of these alternatives represents the best possible configuration within its broader structural category. In all four cases, the ventilation shaft setback was implicitly assumed to remain close to the DPR minimum of 25 m. As a result, the analysis did not consider whether larger setbacks such as 50 m, 70 m, or 100 m might lead to a more preferred outcome from a group decision-making perspective. This limitation provides the direct rationale for introducing the a priori optimisation models developed in Sections 5 and 6.
+</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- 5. 2×2 MODEL -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<section id="model2x2">
+  <div class="container">
+    <div class="section-eyebrow"><span class="section-number">05</span><span class="section-label-text">model2x2</span></div>
+    <div class="gold-rule"></div>
+    <h2>Preliminary 2×2 Optimisation Model</h2>
+
+    <h3>Purpose and Structure</h3>
+    <p>The 2×2 model is primarily valuable for analytical and visual purposes. Because it contains only two design variables, the entire design space can be represented as a contour plot and the full Pareto frontier can be computed explicitly. Such complete visualisation and exhaustive representation are not possible in the full four-dimensional model.</p>
+    <p><strong>Two design variables:</strong> reclamation width w [0–85 m] and shaft setback distance d [15–120 m].<strong>Two objectives:</strong> O2 construction cost (BMC, weight 0.50) and O3 beach retention (BRH, weight 0.50) — the most directly conflicting pair in Section 6.</p>
+
+   <img src="design_space_2x2_mumbai.png" alt="Design space contour plot" style="width:100%;height:auto;display:block;">
+   <img src="pareto_front_2x2_mumbai.png" alt="Pareto front plot" style="width:100%;height:auto;display:block;">
+
+    <h3>What the contour plot shows</h3>
+    <p>The contour plot maps group preference P_group across every feasible combination of reclamation width w and shaft setback d simultaneously which is only possible with two design variables. Three things are immediately readable from the colour field before any optimisation is run.</p>
+    <p>The green zone is concentrated along the left edge of the plot where w=0. Moving rightward, increasing reclamation and the colour shifts from green through yellow into red regardless of what value d takes. This means the cost–beach trade-off in the [w,d] space has a clear dominant direction: stay at zero reclamation.</p>
+    <p>Within the green zone at w=0, the colour is slightly darker at the bottom (small d) and slightly lighter toward the top (large d). This gradient shows that in a model with only cost and beach retention as objectives, larger shaft setback only adds cost without improving either objective, so the contour rewards smaller d.</p>
+    <p>The feasibility boundary overlay on the right panel shows where the budget constraint and AAI height limit bind. All configurations with w greater than approximately 50 m become budget-constrained, and the dotted boundary at w=30 m marks where bridge-type structures trigger the airspace height check.</p>
+
+    <h3>Pareto Front — The Structural Proof</h3>
+    <p><strong>Every solution on the Pareto front has w=0.</strong>not approximately, but exactly zero. In other words, no reclamation configuration appears on the non-dominated frontier under equal weighting of BMC and BRH. This shows that, for any equal or near-equal weighting, there is always a tunnel configuration that achieves equal or lower cost while also providing equal or greater beach retention than any reclamation-based alternative. Reclamation therefore does not constitute a genuine trade-off; it is strictly dominated.</p>
+    <p>This result is structural rather than sensitivity-dependent. It also explains analytically why Reclamation (A2) ranks last in every MCDA scenario. The MCDA was effectively rediscovering this Pareto dominance through changes in numerical weights, whereas the 2×2 model demonstrates the same conclusion directly in geometric terms.</p>
+    <h3>Optimisation Results and the Key Limitation</h3>
+<div class="result-callout">
+  <div class="result-stat">
+    <div class="rs-label">w — reclamation</div>
+    <div class="rs-value">0.0 m</div>
+    <div class="rs-note">All three paradigms agree</div>
+  </div>
+  <div class="result-stat">
+    <div class="rs-label">d — shaft setback</div>
+    <div class="rs-value">15.0 m</div>
+    <div class="rs-note">Cost-minimising optimum</div>
+  </div>
+  <div class="result-stat">
+    <div class="rs-label">P_group (2×2)</div>
+    <div class="rs-value">64.1</div>
+    <div class="rs-note">Equal 50/50 BMC / BRH</div>
+  </div>
+  <div class="result-stat">
+    <div class="rs-label">Paradigm agreement</div>
+    <div class="rs-value">3 / 3</div>
+    <div class="rs-note">minmax · Tetra · scipy WM</div>
+  </div>
+</div>
+    <p><p>All three paradigms converge on the same result: zero reclamation and the minimum feasible shaft setback. The w=0 result is the central finding — confirmed analytically by the Pareto front and numerically by all three aggregation approaches. The d=15 m result is equally correct within the scope of this model: with construction cost penalising every additional metre of setback and neither objective rewarding it, the optimiser places the shaft as close to the beach as the constraint allows.</p>
+
+    <img src="sensitivity_2x2_mumbai.png" alt="Sensitivity Analysis plot" style="width:100%;height:auto;display:block;">
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- 6. FULL MODEL -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<section id="fullmodel">
+  <div class="container">
+    <div class="section-eyebrow"><span class="section-number">06</span><span class="section-label-text">Week 5 Deliverable</span></div>
+    <div class="gold-rule"></div>
+    <h2>Full 4-Variable 6-Objective Optimisation Model</h2>
+
+    <h3>Design Variables</h3>
+    <table class="var-table">
+      <thead><tr><th>Symbol</th><th>Variable</th><th>Description</th><th>Lower</th><th>Upper</th></tr></thead>
+      <tbody>
+        <tr><td>x₁ = L</td><td>Span length [km]</td><td>Effective length of main structure. 1.8 km = minimum to cover Juhu Beach frontage; longer spans protect more beach but cost more.</td><td>1.8 km</td><td>3.2 km</td></tr>
+        <tr><td>x₂ = n</td><td>Lanes per direction</td><td>Traffic lanes each direction. 3 = MCRP mandate minimum; 5 = structural and CRZ maximum. Continuous; rounded for interpretation.</td><td>3</td><td>5</td></tr>
+        <tr><td>x₃ = w</td><td>Reclamation width [m]</td><td>Lateral footprint from beach edge. w=0 is pure bored tunnel; w>30 approaches bridge/elevated structure. Upper bound 85 m = CRZ-II limit.</td><td>0 m</td><td>85 m</td></tr>
+        <tr><td>x₄ = d</td><td>Shaft setback [m]</td><td>Horizontal distance of ventilation shafts from beach edge. DPR minimum ~25 m. The key novel design variable absent from all curated MCDA alternatives.</td><td>15 m</td><td>120 m</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Objective Functions</h3>
+    <div class="obj-grid">
+      <div class="obj-card">
+        <span class="obj-code">O1 · BMC</span>
+        <h4>Traffic Throughput</h4>
+        <div class="obj-formula">f₁ = n × 1800 [PCU/hr]</div>
+        <p>HCM standard: 1,800 PCU/lane/hr at design speed. Linear in n — each lane adds exactly one lane-capacity. Takes only x₂ as argument.</p>
+      </div>
+      <div class="obj-card">
+        <span class="obj-code">O2 · BMC</span>
+        <h4>Construction Cost</h4>
+        <div class="obj-formula">f₂ = 280 + 85n + 420(w/85) + 0.8d [Cr/km]</div>
+        <p>Baseline 280 Cr/km (DPR tunnel). +85n for lane widening. +420(w/85) for reclamation premium. +0.8d for longer adits at INR 0.8 Cr/km/metre.</p>
+      </div>
+      <div class="obj-card">
+        <span class="obj-code">O3 · BRH</span>
+        <h4>Beach Width Retained</h4>
+        <div class="obj-formula">f₃ = max(0, (55−w)/55) × 100 [%]</div>
+        <p>Original Juhu Beach width = 55 m. Linear in w: every metre of reclamation removes one metre of beach. Clamped to zero beyond w=55 m.</p>
+      </div>
+      <div class="obj-card">
+        <span class="obj-code">O4 · BRH </span>
+        <h4>Sea-View Openness</h4>
+        <div class="obj-formula">f₄ = 10 × (1−w/85) × (1−exp(−0.05d))</div>
+        <p>Corrected from original formulation which penalised larger d. Now correctly: as d increases, (1−exp(−0.05d)) increases toward 1, giving higher sea-view score for more distant shafts. At d=60m, f₄=9.50 (sanity check confirms correctness).</p>
+      </div>
+      <div class="obj-card">
+        <span class="obj-code">O5 · ENV</span>
+        <h4>Reclamation Footprint</h4>
+        <div class="obj-formula">f₅ = w × L × 1000 [m²]</div>
+        <p>Total permanent coastal area lost. At maximum (w=85m, L=3.2km): 272,000 m² = 27 hectares. Zero for any tunnel configuration regardless of span length.</p>
+      </div>
+      <div class="obj-card">
+        <span class="obj-code">O6 · ENV</span>
+        <h4>Construction Disturbance</h4>
+        <div class="obj-formula">f₆ = 0.4(w/85)×10 + 0.6(1−d/120)×10</div>
+        <p>Composite: 40% reclamation activity disturbance (marine ecology) + 60% shaft proximity disturbance (beach visitor experience). Larger d reduces the proximity component; zero reclamation eliminates the first component entirely.</p>
+      </div>
+    </div>
+
+    <div class="note-box">
+      <strong>Critical O4 correction:</strong> The original sea-view function used exp(−0.05d), which produced a HIGHER score at SMALLER setbacks — physically wrong. The corrected function (1−exp(−0.05d)) increases as d increases, correctly rewarding larger shaft setbacks with better sea-view quality. Sanity check at d=60m, w=0: f₄ = 10 × (1−exp(−3.0)) = 9.50 ✓. This correction is the direct cause of the Tetra paradigm finding d≈98 m rather than d=15 m.
+    </div>
+
+    <h3>Preference Functions</h3>
+    <p>Each raw objective value is converted to a Tetra ratio-scale preference score P ∈ [0, 100] using three calibration points and PCHIP (Piecewise Cubic Hermite Interpolating Polynomial) interpolation — guaranteed monotone, non-overshooting. All functions are clipped to [0, 100] to prevent extrapolation beyond calibration bounds. For inverted objectives (O2, O5, O6), x-values are listed ascending with y-values reversed.</p>
+
+    <img src="preference_curves_mumbai" alt="Preference curve for all objectives" style="width:100%;height:auto;display:block;">
+
+    <h3>Weights and Constraints</h3>
+
+    <h4>Stakeholder weights</h4>
+    <p>The three preference-bearing stakeholder groups receive global weights reflecting their relative claims on the design outcome. BMC and BRH are weighted equally at 0.30 each — BMC holds institutional project authority while BRH holds the largest public legitimacy claim on the affected asset, and no methodological basis exists for treating one as more important than the other in the absence of a formal political decision. ENV receives 0.25, reflecting its statutory regulatory role which is significant but narrower in scope than the other two groups. The Airport Authority of India is not assigned a preference weight at all — its compliance requirement is binary and non-negotiable, making it a hard engineering constraint rather than a tradeable preference.</p>
+
+    <h4>Sub-criterion weights and normalisation</h4>
+    <p>Within each stakeholder group, the two criteria are weighted to reflect their relative importance. For BMC, throughput carries 0.55 and cost carries 0.45 where capacity is the primary mandate of the project, but cost discipline is a close secondary concern. For BRH, beach preservation carries 0.60 and sea-view carries 0.40 where permanent beach loss is the dominant public concern, while sea-view obstruction is important but recoverable in part. For ENV, reclamation footprint and construction disturbance are weighted equally at 0.50 each.</p>
+    <p>Multiplying the global and sub-criterion weights produces effective weights that sum to 0.85 rather than 1.0 because AAI's share is handled as a constraint, not a weight. The GA aggregator requires weights summing to exactly 1.0, so all effective weights are divided by 0.85 before being passed to the objective function. This preserves every relative priority exactly while satisfying the technical requirement.</p>
+
+<h4>Design constraints</h4>
+<p>Five constraints bound the feasible design space. The lane count lower bound (at least three lanes per direction) comes directly from the MCRP project mandate and is encoded as a simple inequality on the lane count variable. Span length and reclamation width limits are enforced through variable bounds. The AAI Obstacle Limitation Surface constraint applies only to bridge or elevated-structure configurations — defined as those where reclamation width exceeds 30 m — and requires the modelled deck height to stay below 18 m above Mean Sea Level. This is encoded as a smooth product function that equals zero for all tunnel solutions, activating only for bridge configurations. The budget constraint requires that total construction cost — unit cost per kilometre multiplied by span length — does not exceed INR 4,200 crore for Section 6.</p>
+    <h3>Three Optimisation Paradigms</h3>
+    <div class="paradigm-compare">
+      <div class="paradigm-card">
+        <div class="pc-label">Equitable</div>
+        <h4>GA minmax</h4>
+        <p style="font-size:14px;color:#4a4a4a;font-weight:300;">Maximises the minimum preference score across all six objectives simultaneously. Ensures no stakeholder is left severely behind. 500 individuals, 500 max generations, stall=10.</p>
+        <div class="pc-score">Floor-lifting</div>
+      </div>
+      <div class="paradigm-card gold">
+        <div class="pc-label">IMAP · Core Course Method</div>
+        <h4>GA Tetra (a_fine)</h4>
+        <p style="font-size:14px;color:#4a4a4a;font-weight:300;">Connects to Tetra web service at choicerobot.com applying the Tetra IMAP algorithm. Each candidate sends preference scores via HTTP; web service returns normalised rank score. 200 individuals, 300 max generations.</p>
+        <div class="pc-score">Aggregate optimum</div>
+      </div>
+      <div class="paradigm-card green">
+        <div class="pc-label">Efficiency benchmark</div>
+        <h4>Scipy SLSQP Weighted Mean</h4>
+        <p style="font-size:14px;color:#4a4a4a;font-weight:300;">Gradient-based optimisation maximising weighted arithmetic mean of all six preference scores. 50 random starting points. Serves as verification of Tetra results and efficiency reference.</p>
+        <div class="pc-score">Weighted sum</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- 7. RESULTS -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<section id="results">
+  <div class="container">
+    <div class="section-eyebrow"><span class="section-number">07</span><span class="section-label-text">Optimisation Results</span></div>
+    <div class="gold-rule"></div>
+    <h2>Full Model Results</h2>
+
+    <h3>Three-Paradigm Comparison</h3>
+    <p>All three paradigms converge on one critical finding but diverge substantially on shaft setback and lane count. A divergence that is analytically revealing.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Variable / Score</th><th>GA minmax</th><th>GA Tetra (a_fine)</th><th>Scipy Weighted Mean</th></tr></thead>
+        <tbody>
+          <tr><td>L — Span length</td><td>2.177 km</td><td>2.571 km</td><td>1.800 km</td></tr>
+          <tr><td>n — Lanes per direction</td><td>4</td><td>5</td><td>5</td></tr>
+          <tr class="rank-1"><td><strong>w — Reclamation width ← KEY</strong></td><td><strong>0.0 m ✓</strong></td><td><strong>0.0 m ✓</strong></td><td><strong>0.0 m ✓</strong></td></tr>
+          <tr><td>d — Shaft setback</td><td>15.0 m</td><td>98.3 m</td><td>100.0 m</td></tr>
+          <tr><td>P_BMC</td><td>31.4</td><td>57.9</td><td>58.2</td></tr>
+          <tr><td>P_BRH</td><td>73.3</td><td>100.0</td><td>100.0</td></tr>
+          <tr><td>P_ENV</td><td>60.6</td><td>98.9</td><td>100.0</td></tr>
+          <tr class="td-best"><td><strong>P_group</strong></td><td><strong>46.6</strong></td><td><strong>72.1 ◄ Best</strong></td><td><strong>72.5</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Preference Scores at the Tetra Optimum (d=98.3 m, n=5)</h3>
+    <div class="chart-card-full">
+      <h3>Tetra (a_fine) Preference Score Breakdown</h3>
+      <p class="chart-sub">Individual objective scores at the Tetra optimal configuration — GA Tetra finds d=98.3 m, n=5, w=0</p>
+      <canvas id="tetraScores" height="70"></canvas>
+    </div>
+    <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border);">
+     <p style="margin-bottom:12px;">The bar chart tells a precise story about what the Tetra aggregation is trading off. Five of the six objectives score at or near 100 — beach retention (O3), sea-view (O4), reclamation footprint (O5), construction disturbance (O6), and throughput (O1) all reach near-maximum preference. The single outlier is O2 construction cost at P=7.4, reflecting the high unit cost of 782.9 Cr/km driven by five lanes and a 98.3 m shaft setback.</p>
+     <p style="margin-bottom:12px;">The combined effective weight of BRH and ENV objectives is 0.505 out of the normalised total, giving them slightly more than half the aggregate influence. With BRH scoring 100.0 and ENV scoring 98.9, the aggregate overwhelmingly rewards this configuration even though BMC's cost preference is nearly eliminated. The Tetra paradigm finds this trade-off optimal: five stakeholders near-perfectly satisfied at the cost of one stakeholder absorbing a large sacrifice on one criterion.</p>
+     <p>This is precisely where the minmax paradigm differs. Minmax would refuse to accept P2=7.4 because it lifts the floor and it would look for a configuration where no single objective scores that low, even at the cost of a lower aggregate. The two paradigms are not disagreeing about the objective functions or the weights; they are applying different normative positions on what fairness in group decision-making means.</p>
+   </div>
+
+    <h3>Preference Scores at the Minimax (d=15 m, n=4)</h3>
+    <div class="chart-card-full" style="margin-top:28px;">
+  <h3>GA minmax — Preference Score Breakdown</h3>
+  <p class="chart-sub">Individual objective scores at the minmax optimal configuration — GA minmax finds d=15 m, n=4, w=0</p>
+  <canvas id="minmaxScores" height="70"></canvas>
+  <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border);">
+    <p style="margin-bottom:12px;">The minmax bar chart shows a very different profile from the Tetra result. Instead of five bars near 100 and one near zero, the scores are spread across a much tighter range — no objective scores above 100 and the lowest score is O6 construction disturbance at P=21.3. This is the floor the minmax paradigm is maximising: the objective that scores worst determines the optimum, and the optimiser lifts it as high as possible without letting any other objective fall below it.</p>
+    <p style="margin-bottom:12px;">The binding floor at d=15 m is construction disturbance (O6) at P=21.3, driven by the shaft being at maximum proximity to the beach edge. Cost (O2) at P=23.6 is the next tightest constraint and the two together prevent the optimiser from moving in any direction without worsening at least one of them. Beach retention (O3) and reclamation footprint (O5) both score 100, confirming zero reclamation is the correct structural choice under all paradigms.</p>
+    <p>The stakeholder group scores reflect this pattern directly. P_BMC = 0.55×37.8 + 0.45×23.6 = 31.4. P_BRH = 0.60×100.0 + 0.40×33.3 = 73.3. P_ENV = 0.50×100.0 + 0.50×21.3 = 60.6. The overall P_group = 0.30×31.4 + 0.30×73.3 + 0.25×60.6 = <strong>46.6 / 100</strong> — lower than the Tetra aggregate of 72.1, but with no stakeholder left as severely behind as BMC is in the Tetra solution.</p>
+  </div>
+</div>
+<img src="optimisation_results_mumbai.png" alt="Optimisation results on preference curve" style="width:100%;height:auto;display:block;">
+<div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border);">
+  <p style="margin-bottom:12px;">The six preference curve plots make the paradigm divergence visible in a way the summary table cannot. Each panel shows the same preference curve, the mathematical relationship between a raw objective value and its preference score with three markers plotted on it: the orange circle for GA minmax, the purple triangle for GA Tetra, and the green star for scipy weighted mean.</p>
+  <p style="margin-bottom:12px;">On five of the six panels throughput (O1), beach retention (O3), sea-view (O4), reclamation footprint (O5), and construction disturbance (O6), the Tetra and weighted mean markers sit at or near the top of the curve while the minmax marker sits lower. On the cost panel (O2) the situation reverses: minmax scores higher on cost preference while Tetra and weighted mean sit near the bottom, reflecting the high unit cost of 782.9 Cr/km that comes with five lanes and a 98.3 m shaft setback.</p>
+  <p>This visual pattern confirms what the numbers say: the Tetra and weighted mean paradigms accept a severe cost penalty in exchange for near-perfect scores on every other objective, while the minmax paradigm refuses to let any single objective score as low as P=7.4 and instead finds a more evenly distributed but lower aggregate result.</p>
+</div>
+
+    <h3>Comparison: A-Priori Optimum vs A-Posteriori MCDA</h3>
+    <div class="note-box"><strong>Note on mixed scoring systems:</strong> MCDA alternatives A1–A4 are scored through Tetra SDM human-assigned ratings. The a-priori optima are scored through mathematical preference functions. These are two legitimate but different scoring approaches — see Section 8.1 for the interpretation.</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Alternative</th><th>P_BMC</th><th>P_BRH</th><th>P_ENV</th><th>P_group</th></tr></thead>
+        <tbody>
+          <tr><td>A1 – Straight Tunnel (DPR preferred)</td><td>55.5</td><td>100.0</td><td>90.0</td><td>69.1</td></tr>
+          <tr><td>A2 – Reclamation</td><td>78.0</td><td>0.0</td><td>2.5</td><td>24.0</td></tr>
+          <tr><td>A3 – Bridge / Sea-link</td><td>65.6</td><td>80.0</td><td>97.5</td><td>68.1</td></tr>
+          <tr><td>A4 – Cut-and-Cover</td><td>57.8</td><td>91.0</td><td>65.0</td><td>60.9</td></tr>
+          <tr><td>A-priori optimum (GA minmax)</td><td>31.4</td><td>73.3</td><td>60.6</td><td>46.6</td></tr>
+          <tr class="td-best"><td><strong>A-priori optimum (GA Tetra/a_fine) ◄</strong></td><td><strong>57.9</strong></td><td><strong>100.0</strong></td><td><strong>98.9</strong></td><td><strong>72.1 (+3.0 vs A1)</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+   <img src="sensitivity_d_mumbai.png" alt="Sensitivity: P_group vs Shaft Setback d" style="width:100%;height:auto;display:block;">
+
+   <img src="convergence_minmax_mumbai.png" alt="GA minmax Convergence" style="width:100%;height:auto;display:block;">
+   <img src="convergence_tetra_mumbai.png" alt="GA Tetra Convergence" style="width:100%;height:auto;display:block;">
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- 8. REFLECTION -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<section id="reflection">
+  <div class="container">
+    <div class="section-eyebrow"><span class="section-number">08</span><span class="section-label-text">Reflection</span></div>
+    <div class="gold-rule"></div>
+    <h2>Reflection and Critical Conspection</h2>
+
+    <div class="reflection-item">
+  <h3>8.1 The Mixed Scoring Problem</h3>
+  <p>The comparison table shows the Tetra a-priori optimum at P_group = 72.1 and A1 at 69.1, a difference of only three points. This narrow gap is misleading because the two scores come from different measurement systems.</p>
+
+  <p>A1 was scored by a human rater using the Tetra SDM desktop software during the MCDA exercise. That rater gave A1 a sea-view score of P = 100, reasoning that a bored tunnel runs entirely underground and causes no visual obstruction at all. The a-priori optimum, by contrast, is scored through the mathematical O4 function which does not evaluate the tunnel bore but the ventilation shaft structures that must break the surface near the beach edge. At A1's implicit DPR shaft setback of 25 m, the O4 formula gives a score of approximately P = 73, not 100. This single difference in how sea-view is measured is enough to inflate A1's position in the comparison table relative to what it would score if both alternatives used the same method.</p>
+
+  <p>When A1 is scored entirely through the same six mathematical functions as the a-priori optimum, its P_group falls slightly below 72.1. The a-priori model does find a genuinely better configuration and the gap just looks smaller than it is in the headline table because of this measurement inconsistency.</p>
+
+  <p>The real advantage of the Tetra optimum over A1 comes from three concrete design differences. First, five lanes instead of four gives O1 a score of 99.3 against A1's approximate 30. Second, a shaft setback of 98.3 m instead of 25 m brings the O4 sea-view score to 100 against A1's mathematical score of approximately 73. Third, the larger setback reduces construction disturbance substantially, with O6 scoring 97.8 against A1's approximate 21 at close shaft proximity. These are genuine engineering improvements, and their combined cost is approximately INR 466 crore over the 2.571 km span, a premium that the Tetra aggregation judges worthwhile given the preference gains they produce for BRH and ENV stakeholders.</p>
+</div>
+
+    <div class="reflection-item">
+      <h3>8.2 The Three-Paradigm Divergence on Shaft Setback</h3>
+      <p>All three paradigms agree on w=0 but diverge dramatically on d: minmax finds d=15 m while Tetra and weighted mean find d≈98–100 m. This 83 m difference under the same objective functions and weights is precisely the PED methodology working. As intended different aggregation paradigms reflect different normative positions on group decision-making.</p>
+      <p>The minmax paradigm maximises the minimum preference score. At d=15 m, the binding floor is O6 (construction disturbance) at P=21.3. If d increases to 50 m, O6 improves but O2 (cost) worsens. The minmax optimiser finds that at d=15 m, both O6 and O2 are approximately equally constrained, and moving d upward does not raise the overall minimum instead it trades one constraint for another. This is mathematically correct minmax behaviour.</p>
+      <p>The Tetra paradigm optimises aggregate welfare, free to let O2 drop to P=7.4 (cost 782.9 Cr/km at d=98.3 m) if it allows all other five objectives to score near 100. With combined effective weight of BRH+ENV at 0.505 of the normalised total, the aggregate overwhelmingly rewards the d=98.3 m configuration. This is also correct Tetra behaviour. The decision of which paradigm applies an equitable floor-lifting or aggregate welfare maximisation is normative and political, not technical.</p>
+    </div>
+
+    <div class="reflection-item">
+      <h3>8.3 The L=1.8 km Result from the Weighted Mean</h3>
+      <p>The scipy weighted mean drives span length to its minimum bound of 1.8 km, which warrants explanation. Span length L appears in only two places in the model: the reclamation footprint objective O5 (f₅=w×L×1000) and the budget constraint. Since w=0 at the optimum, O5=0 regardless of L. The budget constraint at the weighted mean optimum (785 Cr/km × 1.8 km = 1,413 Cr) is well within the 4,200 Cr cap is also not binding. With no preference gradient and no binding constraint on L, the solver places it at the lower bound. This is a model limitation: span length should carry a preference signal for beach coverage which implies longer spans protect more of the beach frontage. As currently built, the model is indifferent to L when w=0, which is an acknowledged simplification.</p>
+    </div>
+
+
+  <div class="reflection-item">
+  <h3>8.4 Convergence of Both Paradigms</h3>
+  <p>The two convergence plots tell fundamentally different stories, and understanding why they look so different is important for interpreting the results correctly.</p>
+
+  <h4>GA minmax</h4>
+  <p>The minmax convergence curve shows the classic pattern of a well-functioning genetic algorithm. The best aggregated score drops steeply in the first five generations as the population rapidly discovers the profitable region of the design space, then slows through generations 7 to 17 as the algorithm switches from broad exploration to fine-grained exploitation, and finally stalls for ten consecutive generations before terminating at generation 23 with a final score of 12.13. The stall at a stable value is the intended stopping condition. It confirms the algorithm found a genuine local optimum and was not cut off prematurely. The score itself is negative because the GA internally minimises, so it is working with the negated group preference. A final score of 12.13 corresponds to a minimum preference floor of approximately 21 across all six objectives, which matches the O6 disturbance score reported in the results.</p>
+
+  <h4>GA Tetra</h4>
+  <p>The Tetra convergence curve appears flat at 100 throughout all generations, which looks suspicious but is entirely expected. The Tetra web service is a ranking algorithm, not an absolute scorer. In each generation it receives the full population of candidate solutions, ranks them against each other, and returns 100 to the best individual and 0 to the worst. The GA therefore always sees its current best individual scored at 100 regardless of whether the population is improving. This means the score curve carries no information about whether the design space is being explored productively. What carries that information is the stability of the design variables across late generations. All Tetra generations from approximately generation 8 onwards return the same configuration: w=0, n near 5, d near 98 m. That stability is the convergence signal, and it is consistent with the minmax result confirming zero reclamation as the structural conclusion.</p>
+</div>
+
+    <h3>8.5 Model Limitations</h3>
+    <div class="critique-grid">
+      <div class="critique-item">
+        <h4>Cost function linearity</h4>
+        <p>f₂ is linear in d, but real shaft construction costs are stepped — each shaft involves non-proportional fixed costs (grouting, waterproofing, electrical, emergency provisions) beyond the simple 0.8 Cr/km/metre linear penalty. Linearity understates marginal cost at very large setback values.</p>
+      </div>
+      <div class="critique-item">
+        <h4>O4 decay coefficient not validated</h4>
+        <p>The coefficient 0.05 per metre in the sea-view function is analytically chosen, not empirically validated. A value of 0.03 or 0.08 would shift the optimal d substantially. This is the single highest-priority parameter for empirical stakeholder validation.</p>
+      </div>
+      <div class="critique-item">
+        <h4>Span length lacks preference signal</h4>
+        <p>When w=0, span length L has no preference gradient in the current model — only the budget constraint acts on it. The weighted mean drives L to its lower bound. Adding a coverage preference objective would give L a meaningful role.</p>
+      </div>
+      <div class="critique-item">
+        <h4>Mixed scoring in comparison table</h4>
+        <p>MCDA alternatives scored through Tetra SDM human ratings; a-priori optima scored through mathematical functions. Both are legitimate but not directly comparable without the correction described in Section 8.1.</p>
+      </div>
+    </div>
+
+    <h3>8.7 Ethical Dimensions</h3>
+    <p><strong>Distributional asymmetry within BRH.</strong> The BRH group is modelled as homogeneous, but five-star hotel operators and daily beach food vendors are assigned equal intra-group weight. Both face construction disruption, but the hotel has legal resources to advocate while the vendor faces total livelihood disruption with no recourse. The model understates harm to the most economically vulnerable.</p>
+    <p><strong>Procedural justice.</strong> The four curated alternatives were narrowed before public consultation, excluding shaft setback configurations (d≈98 m) the model identifies as significantly preferable. If affected communities were only consulted on pre-narrowed options, they were denied meaningful input into design decisions that substantially affect them.</p>
+    <p><strong>Irreversibility.</strong> The model treats reclamation as a finite preference cost that can be traded against other values. Permanent coastal reclamation is irreversible. Future generations cannot recover a lost coastline. A ratio preference scale cannot capture this qualitative distinction — it is a genuine boundary on the model's scope as a decision-support tool.</p>
+    <p><strong>AAI's dual role.</strong> AAI is simultaneously a stakeholder (preference weight ~17.6% normalised) and a regulatory authority with coercive power to render the Bridge infeasible. This asymmetry of one stakeholder can unilaterally reshape the feasible set and is not representable in the preference model. The MCDA's claim that A1 leads A3 by one preference point should acknowledge that AAI's regulatory position, not balanced preferences, is the decisive factor.</p>
+
+    <div class="reflection-item">
+      <h3>8.8 Integrated Conspection</h3>
+      <p>The PED methodology works as intended at the level of structural type selection. The a-posteriori Tetra MCDA (eight scenarios) and all three paradigms of the a-priori optimisation (two model configurations) independently converge on the bored tunnel as the dominant structural choice. This cross-method convergence is strong evidence the tunnel recommendation is robust rather than an artefact of any particular modelling choice.</p>
+      <p>The methodology's most significant contribution at the Section 6 level is not confirming the tunnel that the DPR consultant already recommended it, but revealing that the Tetra optimum at d=98.3 m, n=5 lanes achieves P_group=72.1, outperforming A1's 69.1. This configuration was invisible to the a-posteriori analysis because shaft setback was never treated as a design variable. The a-priori model reveals a 3-point preference improvement by exploring a dimension the curated alternatives ignored.</p>
+      <p>The 2×2 model's Pareto front provides the deepest analytical underpinning: zero reclamation is always Pareto-non-dominated as a structural proof independent of calibration uncertainty or weight choice. The minmax and Tetra paradigm divergence is a direct representation of two normative positions on group decision-making. The O4 correction from the original formulation to the physically coherent one is both a methodological lesson and a substantive result and without it, the shaft setback finding disappears.</p>
+      <p>The methodology is appropriately silent on the political dimensions: AAI's dual role, procedural legitimacy of the curated alternative set, distributional asymmetry within BRH, and the irreversibility of coastal reclamation. These mark the correct boundary between mathematical optimisation as a decision-support tool and political deliberation as the ultimate decision-making process. The value of the open glass-box model is precisely that this boundary is visible and discussable rather than hidden inside an opaque institutional process.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- 9. CONCLUSION -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<section id="conclusion">
+  <div class="container">
+    <div class="section-eyebrow"><span class="section-number">09</span><span class="section-label-text">Conclusion</span></div>
+    <div class="gold-rule"></div>
+    <h2>Conclusion</h2>
+
+    <p>This ODL response applied the six-step Preference-Based Engineering Design methodology to Mumbai Coastal Road Section 6 through two complete optimisation models that is, a preliminary 2×2 and a full 4-variable 6-objective using three aggregation paradigms: GA minmax, GA Tetra (a_fine), and scipy weighted mean.</p>
+    <p>The a-posteriori Tetra MCDA confirmed the Straight Tunnel as the best compromise in six of eight sensitivity weight scenarios. The one-preference-point margin over the Bridge reflects conditional dominance contingent on an unresolved AAI NOC, a finding the scores reveal that the rank order alone conceals.</p>
+    <p>The preliminary 2×2 model established through the Pareto front that zero reclamation is always Pareto-non-dominated and an analytical proof independent of calibration or weight choices. The 2×2 model correctly drove shaft setback to its minimum of 15 m because sea-view and disturbance objectives were absent, leaving no preference signal to reward larger setbacks. This is the 2×2 model's clearest contribution: showing exactly what the full model must add, and why.</p>
+    <p>After correcting the sea-view function (O4) to its physically coherent form, the full model under all three paradigms confirmed w=0. The Tetra paradigm found d=98.3 m and n=5 lanes, achieving P_group=72.1 outperforming the best MCDA alternative A1 by 3.0 points. The minmax paradigm found d=15 m and n=4, achieving P_group=46.6 prioritising equitable floor-lifting over aggregate welfare. Both are valid answers to their respective normative questions.</p>
+    <p>The shaft setback finding at d≈98 m under Tetra versus the DPR's implicit 25 m is the original contribution of the a-priori approach. It is a continuous design dimension systematically omitted from all four DPR alternatives, confirmed across two paradigms, and worth approximately INR 466 Cr in additional cost against a 3.0 preference point gain and near-maximum BRH and ENV scores. The O4 function correction was essential: without it, both models drove shaft setback to the minimum and the finding disappeared.</p>
+
+    <div class="result-callout">
+      <div class="result-stat"><div class="rs-label">Best a-priori P_group</div><div class="rs-value">72.1</div><div class="rs-note">GA Tetra · d=98.3m · n=5</div></div>
+      <div class="result-stat"><div class="rs-label">vs. best MCDA (A1)</div><div class="rs-value">+3.0 pts</div><div class="rs-note">P_group 72.1 vs 69.1</div></div>
+      <div class="result-stat"><div class="rs-label">All paradigms agree</div><div class="rs-value">w = 0 m</div><div class="rs-note">Zero reclamation universal</div></div>
+      <div class="result-stat"><div class="rs-label">Novel design dimension</div><div class="rs-value">d ≈ 98 m</div><div class="rs-note">vs. DPR implicit 25 m</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p>CME4481 – Systems Engineering Design · TU Delft Faculty ABE · April 2026</p>
+  <p>Models: Mumbai_CoastalRoad_2x2_PreliminaryModel_Final.ipynb · Mumbai_CoastalRoad_OptimisationModel_Final_1.ipynb · MCDA: test0–test7.html</p>
+</footer>
+
+<script>
+// ── MCDA Sensitivity Chart ──────────────────────────────────────────────────
+const mcdaCtx = document.getElementById('mcdaChart').getContext('2d');
+new Chart(mcdaCtx, {
+  type: 'bar',
+  data: {
+    labels: ['test0','test1','test2','test3','test4','test5','test6','test7'],
+    datasets: [
+      { label: 'A1 – Tunnel',      data: [100,81.9,100,100,100,100,82.1,100], backgroundColor: '#0f2d48' },
+      { label: 'A2 – Reclamation', data: [0,52.1,0,0,0,0,22.7,0],            backgroundColor: '#c85a30' },
+      { label: 'A3 – Bridge',      data: [91.7,100,84.9,2.4,94.7,93.4,100,86.6], backgroundColor: '#2d6a9f' },
+      { label: 'A4 – Cut-Cover',   data: [49.9,0,71.7,49.9,59.9,55.8,0,73.1],backgroundColor: '#b07d3a' },
+    ]
+  },
+  options: {
+    plugins: { legend: { position: 'top' } },
+    scales: {
+      x: { grid: { display: false } },
+      y: { min: 0, max: 105, title: { display: true, text: 'Normalised P_group score' } }
+    },
+    responsive: true
+  }
+});
+
+// ── Tetra Score Breakdown ──────────────────────────────────────────────────
+const tetraCtx = document.getElementById('tetraScores').getContext('2d');
+new Chart(tetraCtx, {
+  type: 'bar',
+  data: {
+    labels: ['O1 Throughput (BMC)','O2 Cost (BMC)','O3 Beach (BRH)','O4 Sea-view (BRH)','O5 Reclamation (ENV)','O6 Disturbance (ENV)'],
+    datasets: [
+      {
+        label: 'GA Tetra (d=98.3m, n=5, w=0)',
+        data: [99.3, 7.4, 100.0, 100.0, 100.0, 97.8],
+        backgroundColor: ['#2d6a9f','#c85a30','#0f2d48','#0f2d48','#2d7a4a','#2d7a4a'],
+        borderRadius: 2
+      }
+    ]
+  },
+  options: {
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { grid: { display: false }, ticks: { font: { size: 11 } } },
+      y: { min: 0, max: 110, title: { display: true, text: 'Preference score P [0–100]' } }
+    },
+    responsive: true
+  }
+});
+
+const minmaxCtx = document.getElementById('minmaxScores').getContext('2d');
+new Chart(minmaxCtx, {
+  type: 'bar',
+  data: {
+    labels: ['O1 Throughput (BMC)','O2 Cost (BMC)','O3 Beach (BRH)','O4 Sea-view (BRH)','O5 Reclamation (ENV)','O6 Disturbance (ENV)'],
+    datasets: [{
+      label: 'GA minmax (d=15m, n=4, w=0)',
+      data: [37.8, 23.6, 100.0, 33.3, 100.0, 21.3],
+      backgroundColor: ['#2d6a9f','#c85a30','#0f2d48','#0f2d48','#2d7a4a','#2d7a4a'],
+      borderRadius: 2
+    }]
+  },
+  options: {
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { grid: { display: false }, ticks: { font: { size: 11 } } },
+      y: { min: 0, max: 110, title: { display: true, text: 'Preference score P [0–100]' } }
+    },
+    responsive: true
+  }
+});
+</script>
+</body>
+</html>
