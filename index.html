@@ -367,7 +367,7 @@
     <h2>Multi-Criteria Decision Analysis — Tetra SDM</h2>
 
     <h3>Evaluation Criteria and Weights</h3>
-    <p>Six criteria are defined — two per preference-bearing stakeholder group. The Tetra ratio preference scale is used throughout, enabling arithmetically valid aggregation — the foundational distinction from classical MCDA methods where ordinal scales make such arithmetic technically indefensible.</p>
+    <p>Six criteria are defined — two per preference-bearing stakeholder group. The Tetra ratio preference scale is used throughout, enabling arithmetically valid aggregation and the foundational distinction from classical MCDA methods where ordinal scales make such arithmetic technically indefensible.</p>
 
     <div class="table-wrap">
       <table>
@@ -406,6 +406,10 @@
       <p class="chart-sub">Normalised group preference scores for A1–A4 across all eight Tetra SDM weight scenarios</p>
       <canvas id="mcdaChart" height="80"></canvas>
     </div>
+   <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border);">
+  <p style="margin-bottom:12px;">Taken together the eight scenarios point to one consistent pattern: the Straight Tunnel holds its ranking across a wide range of weight combinations precisely because its advantage is not built on any single criterion. It scores well enough on cost to stay competitive with the Bridge, scores perfectly on AAI compliance where the Bridge is conditionally penalised, and preserves the beach completely where Reclamation scores zero. No single stakeholder group needs to dominate the weighting for A1 to come out ahead.</p>
+  <p>The only condition under which this changes is when BMC's weight is pushed above 0.60. At that point the Bridge's cost advantage becomes large enough to overcome the AAI compliance gap. This means the ranking is not robust to strong BMC dominance, and any decision document based on this analysis should acknowledge that the tunnel's lead over the bridge is contingent — held in place by an unresolved regulatory condition rather than a clear preference advantage across all criteria.</p>
+</div>
 
     <h3>A-Posteriori Limitation</h3>
     <p>The MCDA framework selects from four predefined alternatives, but it does not examine whether any of these alternatives represents the best possible configuration within its broader structural category. In all four cases, the ventilation shaft setback was implicitly assumed to remain close to the DPR minimum of 25 m. As a result, the analysis did not consider whether larger setbacks such as 50 m, 70 m, or 100 m might lead to a more preferred outcome from a group decision-making perspective. This limitation provides the direct rationale for introducing the a priori optimisation models developed in Sections 5 and 6.
