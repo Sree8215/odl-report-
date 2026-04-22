@@ -477,7 +477,7 @@
 <!-- ══════════════════════════════════════════════════════════════ -->
 <section id="fullmodel">
   <div class="container">
-    <div class="section-eyebrow"><span class="section-number">06</span><span class="section-label-text">Week 5 Deliverable</span></div>
+    <div class="section-eyebrow"><span class="section-number">06</span><span class="section-label-text">Full model</span></div>
     <div class="gold-rule"></div>
     <h2>Full 4-Variable 6-Objective Optimisation Model</h2>
 
@@ -532,9 +532,6 @@
       </div>
     </div>
 
-    <div class="note-box">
-      <strong>Critical O4 correction:</strong> The original sea-view function used exp(−0.05d), which produced a HIGHER score at SMALLER setbacks — physically wrong. The corrected function (1−exp(−0.05d)) increases as d increases, correctly rewarding larger shaft setbacks with better sea-view quality. Sanity check at d=60m, w=0: f₄ = 10 × (1−exp(−3.0)) = 9.50 ✓. This correction is the direct cause of the Tetra paradigm finding d≈98 m rather than d=15 m.
-    </div>
 
     <h3>Preference Functions</h3>
     <p>Each raw objective value is converted to a Tetra ratio-scale preference score P ∈ [0, 100] using three calibration points and PCHIP (Piecewise Cubic Hermite Interpolating Polynomial) interpolation guaranteed monotone, non-overshooting. All functions are clipped to [0, 100] to prevent extrapolation beyond calibration bounds. For inverted objectives (O2, O5, O6), x-values are listed ascending with y-values reversed.</p>
