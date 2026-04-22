@@ -301,7 +301,7 @@
     <div class="stakeholder-grid">
   <div class="stakeholder-card">
     <div class="sh-label">BMC</div>
-    <h4>Transport Planners / Project Owner</h4>
+    <h4>Brihanmumbai Municipal Corporation(BMC)-Project Owner</h4>
     <p>BMC needs Section 6 to function as a high-capacity expressway that meaningfully reduces journey times on the western corridor. Every design decision is ultimately evaluated against two things: does it deliver enough lanes to handle projected traffic volumes, and does it stay within the project budget. Politically, BMC also needs a solution that does not invite years of litigation from affected communities, since prolonged legal challenges would delay the broader corridor and undermine the project's rationale.</p>
   </div>
   <div class="stakeholder-card">
@@ -381,7 +381,7 @@
   </thead>
   <tbody>
     <tr style="background:#5d9c70;color:#fff;">
-      <td colspan="2" style="padding:10px 16px;font-weight:600;">Transport Planners / Project Owner <span style="font-weight:400;opacity:0.85;">0.333</span></td>
+      <td colspan="2" style="padding:10px 16px;font-weight:600;">Project Owner(BMC) <span style="font-weight:400;opacity:0.85;">0.333</span></td>
     </tr>
     <tr><td style="padding:9px 16px 9px 32px;border-bottom:1px solid #e5e0d8;">Construction Complexity</td><td style="padding:9px 16px;text-align:right;font-weight:500;border-bottom:1px solid #e5e0d8;">0.3</td></tr>
     <tr><td style="padding:9px 16px 9px 32px;border-bottom:1px solid #e5e0d8;">Cost Efficiency</td><td style="padding:9px 16px;text-align:right;font-weight:500;border-bottom:1px solid #e5e0d8;">0.4</td></tr>
@@ -408,7 +408,7 @@
         <div style="width:34px;height:34px;border-radius:50%;background:#1a4a72;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;">TP</div>
         <div style="font-size:13px;font-weight:700;letter-spacing:0.03em;text-transform:uppercase;color:#1a4a72;">Transport Planners / Project Owner</div>
       </div>
-      <div style="padding:14px 18px;border-top:1px solid #ddd8cf;font-size:13px;color:#4a4a4a;line-height:1.7;">The Bridge performs well because it combines relatively lower construction complexity with better cost efficiency. Compared to the straight tunnel, it is easier and less expensive to deliver, while still offering strong traffic capacity and design performance.</div>
+      <div style="padding:14px 18px;border-top:1px solid #ddd8cf;font-size:13px;color:#4a4a4a;line-height:1.7;">The Bridge performs well for project owners because it combines relatively lower construction complexity with better cost efficiency. Compared to the straight tunnel, it is easier and less expensive to deliver, while still offering strong traffic capacity and design performance.</div>
     </div>
 
     <div style="border:1px solid #ddd8cf;background:#fff;overflow:hidden;">
@@ -429,17 +429,17 @@
 
   </div>
 
-  <div style="border:1px solid #ddd8cf;background:#fff;padding:16px 18px;">
+  <div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:10px;">
     <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#888;margin-bottom:12px;">Remaining Alternatives</div>
     <div style="display:flex;gap:10px;align-items:baseline;margin-bottom:10px;">
       <div style="width:22px;height:22px;border-radius:50%;background:#2d6a4a;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;flex-shrink:0;">2</div>
       <div style="font-size:13px;color:#4a4a4a;line-height:1.65;">The Straight Tunnel ranks second overall. It performs particularly well on sea-view preservation and beach-related criteria, but its higher cost and greater construction complexity reduce its overall score when all stakeholder groups are weighted equally.</div>
     </div>
-    <div style="display:flex;gap:10px;align-items:baseline;margin-bottom:10px;">
+    <div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:10px;">
       <div style="width:22px;height:22px;border-radius:50%;background:#6b6b6b;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;flex-shrink:0;">3</div>
       <div style="font-size:13px;color:#4a4a4a;line-height:1.65;">Cut and Cover ranks third, mainly because of its high construction disruption and weaker overall balance across stakeholder concerns.</div>
     </div>
-    <div style="display:flex;gap:10px;align-items:baseline;">
+    <div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:10px;">
       <div style="width:22px;height:22px;border-radius:50%;background:#c84a3a;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;flex-shrink:0;">4</div>
       <div style="font-size:13px;color:#4a4a4a;line-height:1.65;">Reclamation ranks last, as it performs poorly on beach preservation, environmental impact, and coastal footprint, making it the least favourable option in the equal-weight baseline.</div>
     </div>
@@ -447,22 +447,70 @@
 </div>
    
 
-    <h3>Eight Sensitivity Scenarios</h3>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Scenario</th><th>BMC wt</th><th>BRH wt</th><th>ENV wt</th><th>Rank 1</th><th>Rank 2</th><th>Key finding</th></tr></thead>
-        <tbody>
-          <tr class="rank-1"><td>test0 (base equal)</td><td>0.45</td><td>0.45</td><td>0.10</td><td><strong>A1 Tunnel</strong></td><td>A3 Bridge</td><td>Baseline</td></tr>
-          <tr><td>test1 (BMC heavy)</td><td>0.65</td><td>0.25</td><td>0.10</td><td>A3 Bridge</td><td>A1 Tunnel</td><td>A3 leads on cost; A1 near-tie</td></tr>
-          <tr class="rank-1"><td>test2 (BRH heavy)</td><td>0.25</td><td>0.65</td><td>0.10</td><td><strong>A1 Tunnel</strong></td><td>A3 Bridge</td><td>Beach weight confirms tunnel</td></tr>
-          <tr class="rank-1"><td>test3 (AAI heavy)</td><td>0.35</td><td>0.35</td><td>0.30</td><td><strong>A1 Tunnel</strong></td><td>A4 Cut-Cover</td><td>AAI amplifies bridge penalty</td></tr>
-          <tr class="rank-1"><td>test4 (+ENV)</td><td>0.35</td><td>0.35</td><td>+ENV</td><td><strong>A1 Tunnel</strong></td><td>A3 Bridge</td><td>ENV adds to tunnel advantage</td></tr>
-          <tr class="rank-1"><td>test5 (equal four)</td><td>0.40</td><td>0.40</td><td>+AAI</td><td><strong>A1 Tunnel</strong></td><td>A3 Bridge</td><td>Robust to equal weighting</td></tr>
-          <tr><td>test6 (Mumbai BMC)</td><td>0.60</td><td>0.20</td><td>0.20</td><td>A3 Bridge</td><td>A1 Tunnel</td><td>Cost + capacity flips ranking</td></tr>
-          <tr class="rank-1"><td>test7 (Mumbai BRH)</td><td>0.20</td><td>0.60</td><td>0.20</td><td><strong>A1 Tunnel</strong></td><td>A3 Bridge</td><td>Beach weight confirms tunnel</td></tr>
-        </tbody>
-      </table>
-    </div>
+    <h3>Sensitivity Scenarios</h3>
+   <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:24px 0;">
+
+  <div>
+    <div style="background:#4a7c3a;color:#fff;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:8px 14px;text-align:center;">Stakeholder Weight +20%</div>
+    <table style="width:100%;border-collapse:collapse;font-size:13px;">
+      <thead><tr>
+        <th style="background:#0f2d48;color:rgba(255,255,255,0.75);padding:8px 12px;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;text-align:left;">Stakeholder / Alternative</th>
+        <th style="background:#0f2d48;color:rgba(255,255,255,0.75);padding:8px 12px;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;text-align:right;">Score</th>
+        <th style="background:#0f2d48;color:rgba(255,255,255,0.75);padding:8px 12px;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;text-align:right;width:40px;">Rank</th>
+      </tr></thead>
+      <tbody>
+        <tr><td colspan="3" style="background:#6aab4a;color:#fff;font-weight:700;font-size:12px;padding:7px 12px;text-align:center;letter-spacing:0.03em;">Transport Planners / Project Owner (BMC) +20%</td></tr>
+        <tr style="border-bottom:1px solid #ede9e1;"><td style="padding:7px 12px;color:#3a3a3a;">Straight Tunnel</td><td style="padding:7px 12px;text-align:right;font-weight:500;color:#0f2d48;">85.4</td><td style="padding:7px 12px;text-align:right;font-weight:700;color:#2d6a4a;">2</td></tr>
+        <tr style="border-bottom:1px solid #ede9e1;"><td style="padding:7px 12px;color:#3a3a3a;">Reclamation</td><td style="padding:7px 12px;text-align:right;font-weight:500;color:#0f2d48;">59.8</td><td style="padding:7px 12px;text-align:right;font-weight:700;color:#c84a3a;">4</td></tr>
+        <tr style="border-bottom:1px solid #ede9e1;background:#faf7f0;"><td style="padding:7px 12px;"><strong>Bridge / Sea-link</strong></td><td style="padding:7px 12px;text-align:right;font-weight:700;color:#0f2d48;">100</td><td style="padding:7px 12px;text-align:right;font-weight:700;color:#b07d3a;">1</td></tr>
+        <tr><td style="padding:7px 12px;color:#3a3a3a;">Cut-and-Cover Shoreline</td><td style="padding:7px 12px;text-align:right;font-weight:500;color:#0f2d48;">82</td><td style="padding:7px 12px;text-align:right;font-weight:700;color:#6b6b6b;">3</td></tr>
+
+        <tr><td colspan="3" style="background:#6aab4a;color:#fff;font-weight:700;font-size:12px;padding:7px 12px;text-align:center;letter-spacing:0.03em;">Beach Users, Residents &amp; Hoteliers (BRH) +20%</td></tr>
+        <tr style="border-bottom:1px solid #ede9e1;"><td style="padding:7px 12px;color:#3a3a3a;">Straight Tunnel</td><td style="padding:7px 12px;text-align:right;font-weight:500;color:#0f2d48;">96.4</td><td style="padding:7px 12px;text-align:right;font-weight:700;color:#2d6a4a;">2</td></tr>
+        <tr style="border-bottom:1px solid #ede9e1;"><td style="padding:7px 12px;color:#3a3a3a;">Reclamation</td><td style="padding:7px 12px;text-align:right;font-weight:500;color:#0f2d48;">26.4</td><td style="padding:7px 12px;text-align:right;font-weight:700;color:#c84a3a;">4</td></tr>
+        <tr style="border-bottom:1px solid #ede9e1;background:#faf7f0;"><td style="padding:7px 12px;"><strong>Bridge / Sea-link</strong></td><td style="padding:7px 12px;text-align:right;font-weight:700;color:#0f2d48;">100</td><td style="padding:7px 12px;text-align:right;font-weight:700;color:#b07d3a;">1</td></tr>
+        <tr><td style="padding:7px 12px;color:#3a3a3a;">Cut-and-Cover Shoreline</td><td style="padding:7px 12px;text-align:right;font-weight:500;color:#0f2d48;">83.6</td><td style="padding:7px 12px;text-align:right;font-weight:700;color:#6b6b6b;">3</td></tr>
+
+        <tr><td colspan="3" style="background:#6aab4a;color:#fff;font-weight:700;font-size:12px;padding:7px 12px;text-align:center;letter-spacing:0.03em;">Environmental &amp; Coastal Stakeholders +20%</td></tr>
+        <tr style="border-bottom:1px solid #ede9e1;"><td style="padding:7px 12px;color:#3a3a3a;">Straight Tunnel</td><td style="padding:7px 12px;text-align:right;font-weight:500;color:#0f2d48;">91.5</td><td style="padding:7px 12px;text-align:right;font-weight:700;color:#2d6a4a;">2</td></tr>
+        <tr style="border-bottom:1px solid #ede9e1;"><td style="padding:7px 12px;color:#3a3a3a;">Reclamation</td><td style="padding:7px 12px;text-align:right;font-weight:500;color:#0f2d48;">25.7</td><td style="padding:7px 12px;text-align:right;font-weight:700;color:#c84a3a;">4</td></tr>
+        <tr style="border-bottom:1px solid #ede9e1;background:#faf7f0;"><td style="padding:7px 12px;"><strong>Bridge / Sea-link</strong></td><td style="padding:7px 12px;text-align:right;font-weight:700;color:#0f2d48;">100</td><td style="padding:7px 12px;text-align:right;font-weight:700;color:#b07d3a;">1</td></tr>
+        <tr><td style="padding:7px 12px;color:#3a3a3a;">Cut-and-Cover Shoreline</td><td style="padding:7px 12px;text-align:right;font-weight:500;color:#0f2d48;">77</td><td style="padding:7px 12px;text-align:right;font-weight:700;color:#6b6b6b;">3</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div>
+    <div style="background:#b07d3a;color:#fff;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:8px 14px;text-align:center;">Stakeholder Weight −20%</div>
+    <table style="width:100%;border-collapse:collapse;font-size:13px;">
+      <thead><tr>
+        <th style="background:#0f2d48;color:rgba(255,255,255,0.75);padding:8px 12px;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;text-align:left;">Stakeholder / Alternative</th>
+        <th style="background:#0f2d48;color:rgba(255,255,255,0.75);padding:8px 12px;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;text-align:right;">Score</th>
+        <th style="background:#0f2d48;color:rgba(255,255,255,0.75);padding:8px 12px;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;text-align:right;width:40px;">Rank</th>
+      </tr></thead>
+      <tbody>
+        <tr><td colspan="3" style="background:#e0a060;color:#fff;font-weight:700;font-size:12px;padding:7px 12px;text-align:center;letter-spacing:0.03em;">Transport Planners / Project Owner (BMC) −20%</td></tr>
+        <tr style="border-bottom:1px solid #ede9e1;"><td style="padding:7px 12px;color:#3a3a3a;">Straight Tunnel</td><td style="padding:7px 12px;text-align:right;font-weight:500;color:#0f2d48;">96.5</td><td style="padding:7px 12px;text-align:right;font-weight:700;color:#2d6a4a;">2</td></tr>
+        <tr style="border-bottom:1px solid #ede9e1;"><td style="padding:7px 12px;color:#3a3a3a;">Reclamation</td><td style="padding:7px 12px;text-align:right;font-weight:500;color:#0f2d48;">15.6</td><td style="padding:7px 12px;text-align:right;font-weight:700;color:#c84a3a;">4</td></tr>
+        <tr style="border-bottom:1px solid #ede9e1;background:#faf7f0;"><td style="padding:7px 12px;"><strong>Bridge / Sea-link</strong></td><td style="padding:7px 12px;text-align:right;font-weight:700;color:#0f2d48;">100</td><td style="padding:7px 12px;text-align:right;font-weight:700;color:#b07d3a;">1</td></tr>
+        <tr><td style="padding:7px 12px;color:#3a3a3a;">Cut-and-Cover Shoreline</td><td style="padding:7px 12px;text-align:right;font-weight:500;color:#0f2d48;">79.7</td><td style="padding:7px 12px;text-align:right;font-weight:700;color:#6b6b6b;">3</td></tr>
+
+        <tr><td colspan="3" style="background:#e0a060;color:#fff;font-weight:700;font-size:12px;padding:7px 12px;text-align:center;letter-spacing:0.03em;">Beach Users, Residents &amp; Hoteliers (BRH) −20%</td></tr>
+        <tr style="border-bottom:1px solid #ede9e1;"><td style="padding:7px 12px;color:#3a3a3a;">Straight Tunnel</td><td style="padding:7px 12px;text-align:right;font-weight:500;color:#0f2d48;">85.9</td><td style="padding:7px 12px;text-align:right;font-weight:700;color:#2d6a4a;">2</td></tr>
+        <tr style="border-bottom:1px solid #ede9e1;"><td style="padding:7px 12px;color:#3a3a3a;">Reclamation</td><td style="padding:7px 12px;text-align:right;font-weight:500;color:#0f2d48;">47.4</td><td style="padding:7px 12px;text-align:right;font-weight:700;color:#c84a3a;">4</td></tr>
+        <tr style="border-bottom:1px solid #ede9e1;background:#faf7f0;"><td style="padding:7px 12px;"><strong>Bridge / Sea-link</strong></td><td style="padding:7px 12px;text-align:right;font-weight:700;color:#0f2d48;">100</td><td style="padding:7px 12px;text-align:right;font-weight:700;color:#b07d3a;">1</td></tr>
+        <tr><td style="padding:7px 12px;color:#3a3a3a;">Cut-and-Cover Shoreline</td><td style="padding:7px 12px;text-align:right;font-weight:500;color:#0f2d48;">78.1</td><td style="padding:7px 12px;text-align:right;font-weight:700;color:#6b6b6b;">3</td></tr>
+
+        <tr><td colspan="3" style="background:#e0a060;color:#fff;font-weight:700;font-size:12px;padding:7px 12px;text-align:center;letter-spacing:0.03em;">Environmental &amp; Coastal Stakeholders −20%</td></tr>
+        <tr style="border-bottom:1px solid #ede9e1;"><td style="padding:7px 12px;color:#3a3a3a;">Straight Tunnel</td><td style="padding:7px 12px;text-align:right;font-weight:500;color:#0f2d48;">90.8</td><td style="padding:7px 12px;text-align:right;font-weight:700;color:#2d6a4a;">2</td></tr>
+        <tr style="border-bottom:1px solid #ede9e1;"><td style="padding:7px 12px;color:#3a3a3a;">Reclamation</td><td style="padding:7px 12px;text-align:right;font-weight:500;color:#0f2d48;">49</td><td style="padding:7px 12px;text-align:right;font-weight:700;color:#c84a3a;">4</td></tr>
+        <tr style="border-bottom:1px solid #ede9e1;background:#faf7f0;"><td style="padding:7px 12px;"><strong>Bridge / Sea-link</strong></td><td style="padding:7px 12px;text-align:right;font-weight:700;color:#0f2d48;">100</td><td style="padding:7px 12px;text-align:right;font-weight:700;color:#b07d3a;">1</td></tr>
+        <tr><td style="padding:7px 12px;color:#3a3a3a;">Cut-and-Cover Shoreline</td><td style="padding:7px 12px;text-align:right;font-weight:500;color:#0f2d48;">84.9</td><td style="padding:7px 12px;text-align:right;font-weight:700;color:#6b6b6b;">3</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
 
     <div class="chart-card-full">
       <h3>MCDA Sensitivity — P_group by Scenario</h3>
