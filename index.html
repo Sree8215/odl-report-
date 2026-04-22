@@ -592,10 +592,10 @@
       <table>
         <thead><tr><th>Variable / Score</th><th>GA minmax</th><th>GA Tetra (a_fine)</th><th>Scipy Weighted Mean</th></tr></thead>
         <tbody>
-          <tr><td>L — Span length</td><td>2.177 km</td><td>2.571 km</td><td>1.800 km</td></tr>
-          <tr><td>n — Lanes per direction</td><td>4</td><td>5</td><td>5</td></tr>
+          <tr><td>L - Span length</td><td>2.177 km</td><td>2.571 km</td><td>1.800 km</td></tr>
+          <tr><td>n - Lanes per direction</td><td>4</td><td>5</td><td>5</td></tr>
           <tr class="rank-1"><td><strong>w — Reclamation width ← KEY</strong></td><td><strong>0.0 m ✓</strong></td><td><strong>0.0 m ✓</strong></td><td><strong>0.0 m ✓</strong></td></tr>
-          <tr><td>d — Shaft setback</td><td>15.0 m</td><td>98.3 m</td><td>100.0 m</td></tr>
+          <tr><td>d - Shaft setback</td><td>15.0 m</td><td>98.3 m</td><td>100.0 m</td></tr>
           <tr><td>P_BMC</td><td>31.4</td><td>57.9</td><td>58.2</td></tr>
           <tr><td>P_BRH</td><td>73.3</td><td>100.0</td><td>100.0</td></tr>
           <tr><td>P_ENV</td><td>60.6</td><td>98.9</td><td>100.0</td></tr>
@@ -723,7 +723,7 @@
     <div class="critique-grid">
       <div class="critique-item">
         <h4>Cost function linearity</h4>
-        <p>f₂ is linear in d, but real shaft construction costs are stepped — each shaft involves non-proportional fixed costs (grouting, waterproofing, electrical, emergency provisions) beyond the simple 0.8 Cr/km/metre linear penalty. Linearity understates marginal cost at very large setback values.</p>
+        <p>f₂ is linear in d, but real shaft construction costs are stepped and each shaft involves non-proportional fixed costs (grouting, waterproofing, electrical, emergency provisions) beyond the simple 0.8 Cr/km/metre linear penalty. Linearity understates marginal cost at very large setback values.</p>
       </div>
       <div class="critique-item">
         <h4>O4 decay coefficient not validated</h4>
@@ -731,7 +731,7 @@
       </div>
       <div class="critique-item">
         <h4>Span length lacks preference signal</h4>
-        <p>When w=0, span length L has no preference gradient in the current model — only the budget constraint acts on it. The weighted mean drives L to its lower bound. Adding a coverage preference objective would give L a meaningful role.</p>
+        <p>When w=0, span length L has no preference gradient in the current model then only the budget constraint acts on it. The weighted mean drives L to its lower bound. Adding a coverage preference objective would give L a meaningful role.</p>
       </div>
       <div class="critique-item">
         <h4>Mixed scoring in comparison table</h4>
