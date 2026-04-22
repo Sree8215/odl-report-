@@ -517,8 +517,7 @@
 </div>
 
 <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border);">
-  <p style="margin-bottom:12px;">Taken together the eight scenarios point to one consistent pattern: the Straight Tunnel holds its ranking across a wide range of weight combinations precisely because its advantage is not built on any single criterion. It scores well enough on cost to stay competitive with the Bridge, scores perfectly on AAI compliance where the Bridge is conditionally penalised, and preserves the beach completely where Reclamation scores zero. No single stakeholder group needs to dominate the weighting for A1 to come out ahead.</p>
-  <p>The only condition under which this changes is when BMC's weight is pushed above 0.60. At that point the Bridge's cost advantage becomes large enough to overcome the AAI compliance gap. This means the ranking is not robust to strong BMC dominance, and any decision document based on this analysis should acknowledge that the tunnel's lead over the bridge is contingent and is held in place by an unresolved regulatory condition rather than a clear preference advantage across all criteria.</p>
+  <p style="margin-bottom:12px;">As shown in the sensitivity analysis, the Bridge / Sea-link remains the preferred alternative across all ±20% weight adjustments for the three stakeholder groups. In every case, the ranking order stays unchanged, with the Straight Tunnel consistently in second place, the Cut-and-Cover Shoreline in third, and Reclamation in fourth. This indicates that the MCDA outcome is highly robust to moderate changes in stakeholder priorities, as no rank reversal occurs under any of the tested scenarios. Since the Bridge remains dominant even when the relative importance of the stakeholder groups is varied, the next step is to explore whether more extreme weight changes would be required to produce a different preferred alternative.</p>
 </div>
 
 <h3>A-Posteriori Limitation</h3>
@@ -897,21 +896,54 @@ const mcdaCtx = document.getElementById('mcdaChart').getContext('2d');
 new Chart(mcdaCtx, {
   type: 'bar',
   data: {
-    labels: ['test0','test1','test2','test3','test4','test5','test6','test7'],
+    labels: ['BMC +20%', 'BRH +20%', 'ENV +20%', 'BMC −20%', 'BRH −20%', 'ENV −20%'],
     datasets: [
-      { label: 'A1 – Tunnel',      data: [100,81.9,100,100,100,100,82.1,100], backgroundColor: '#0f2d48' },
-      { label: 'A2 – Reclamation', data: [0,52.1,0,0,0,0,22.7,0],            backgroundColor: '#c85a30' },
-      { label: 'A3 – Bridge',      data: [91.7,100,84.9,2.4,94.7,93.4,100,86.6], backgroundColor: '#2d6a9f' },
-      { label: 'A4 – Cut-Cover',   data: [49.9,0,71.7,49.9,59.9,55.8,0,73.1],backgroundColor: '#b07d3a' },
+      {
+        label: 'A1 – Tunnel',
+        data: [85.4, 96.4, 91.5, 96.5, 85.9, 90.8],
+        backgroundColor: '#0f2d48'
+      },
+      {
+        label: 'A2 – Reclamation',
+        data: [59.8, 26.4, 25.7, 15.6, 47.4, 49],
+        backgroundColor: '#c84a3a'
+      },
+      {
+        label: 'A3 – Bridge',
+        data: [100, 100, 100, 100, 100, 100],
+        backgroundColor: '#4a7c3a'
+      },
+      {
+        label: 'A4 – Cut-Cover',
+        data: [82, 83.6, 77, 79.7, 78.1, 84.9],
+        backgroundColor: '#b07d3a'
+      }
     ]
   },
   options: {
-    plugins: { legend: { position: 'top' } },
-    scales: {
-      x: { grid: { display: false } },
-      y: { min: 0, max: 105, title: { display: true, text: 'Normalised P_group score' } }
+    responsive: true,
+    plugins: {
+      legend: {
+        labels: { font: { size: 12 }, padding: 16, usePointStyle: true }
+      }
     },
-    responsive: true
+    scales: {
+      x: {
+        grid: { display: false },
+        ticks: { font: { size: 11 } },
+        afterFit: (axis) => { axis.paddingRight = 10; }
+      },
+      y: {
+        min: 0, max: 105,
+        grid: { color: '#ece8e0' },
+        ticks: { font: { size: 11 } },
+        title: {
+          display: true,
+          text: 'Normalised P_group score',
+          font: { size: 12 }
+        }
+      }
+    }
   }
 });
 
