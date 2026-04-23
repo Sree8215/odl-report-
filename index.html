@@ -1023,47 +1023,37 @@
     <h2>Reflection and Critical Conspection</h2>
 
     <div class="reflection-item">
-  <h3>8.1 The Mixed Scoring Problem</h3>
-  <p>The comparison table shows the Tetra a-priori optimum at P_group = 72.1 and A1 at 69.1, a difference of only three points. This narrow gap is misleading because the two scores come from different measurement systems.</p>
-
-  <p>A1 was scored by a human rater using the Tetra SDM desktop software during the MCDA exercise. That rater gave A1 a sea-view score of P = 100, reasoning that a bored tunnel runs entirely underground and causes no visual obstruction at all. The a-priori optimum, by contrast, is scored through the mathematical O4 function which does not evaluate the tunnel bore but the ventilation shaft structures that must break the surface near the beach edge. At A1's implicit DPR shaft setback of 25 m, the O4 formula gives a score of approximately P = 73, not 100. This single difference in how sea-view is measured is enough to inflate A1's position in the comparison table relative to what it would score if both alternatives used the same method.</p>
-
-  <p>When A1 is scored entirely through the same six mathematical functions as the a-priori optimum, its P_group falls slightly below 72.1. The a-priori model does find a genuinely better configuration and the gap just looks smaller than it is in the headline table because of this measurement inconsistency.</p>
-
-  <p>The real advantage of the Tetra optimum over A1 comes from three concrete design differences. First, five lanes instead of four gives O1 a score of 99.3 against A1's approximate 30. Second, a shaft setback of 98.3 m instead of 25 m brings the O4 sea-view score to 100 against A1's mathematical score of approximately 73. Third, the larger setback reduces construction disturbance substantially, with O6 scoring 97.8 against A1's approximate 21 at close shaft proximity. These are genuine engineering improvements, and their combined cost is approximately INR 466 crore over the 2.571 km span, a premium that the Tetra aggregation judges worthwhile given the preference gains they produce for BRH and ENV stakeholders.</p>
-</div>
-
-    <div class="reflection-item">
-      <h3>8.2 The Three-Paradigm Divergence on Shaft Setback</h3>
-      <p>All three paradigms agree on w=0 but diverge dramatically on d: minmax finds d=15 m while Tetra and weighted mean find d≈98–100 m. This 83 m difference under the same objective functions and weights is precisely the PED methodology working. As intended different aggregation paradigms reflect different normative positions on group decision-making.</p>
-      <p>The minmax paradigm maximises the minimum preference score. At d=15 m, the binding floor is O6 (construction disturbance) at P=21.3. If d increases to 50 m, O6 improves but O2 (cost) worsens. The minmax optimiser finds that at d=15 m, both O6 and O2 are approximately equally constrained, and moving d upward does not raise the overall minimum instead it trades one constraint for another. This is mathematically correct minmax behaviour.</p>
-      <p>The Tetra paradigm optimises aggregate welfare, free to let O2 drop to P=7.4 (cost 782.9 Cr/km at d=98.3 m) if it allows all other five objectives to score near 100. With combined effective weight of BRH+ENV at 0.505 of the normalised total, the aggregate overwhelmingly rewards the d=98.3 m configuration. This is also correct Tetra behaviour. The decision of which paradigm applies an equitable floor-lifting or aggregate welfare maximisation is normative and political, not technical.</p>
+      <h3>8.1 Preference Does Not Automatically Mean Feasibility</h3>
+      <p>One of the clearest lessons from this project was that the alternative with the highest stakeholder preference is not always the one that can actually be built. In the MCDA, the Bridge emerged as a strong option because it performed well across the BMC, BRH, and ENV preference structure. However, once the AAI airspace restriction above Juhu Aerodrome was treated properly as a hard constraint, the Bridge was no longer feasible. This made an important difference: the problem was no longer just about which option was most preferred, but about which option remained both preferred and feasible. That is exactly the distinction this course emphasises.</p>
     </div>
 
     <div class="reflection-item">
-      <h3>8.3 The L=1.8 km Result from the Weighted Mean</h3>
-      <p>The scipy weighted mean drives span length to its minimum bound of 1.8 km, which warrants explanation. Span length L appears in only two places in the model: the reclamation footprint objective O5 (f₅=w×L×1000) and the budget constraint. Since w=0 at the optimum, O5=0 regardless of L. The budget constraint at the weighted mean optimum (785 Cr/km × 1.8 km = 1,413 Cr) is well within the 4,200 Cr cap is also not binding. With no preference gradient and no binding constraint on L, the solver places it at the lower bound. This is a model limitation: span length should carry a preference signal for beach coverage which implies longer spans protect more of the beach frontage. As currently built, the model is indifferent to L when w=0, which is an acknowledged simplification.</p>
+      <h3>8.2 The Model Had to Evolve as Understanding of the Project Became Sharper</h3>
+      <p>A second important reflection is that the model could not remain fixed throughout the project. In the early stage, reclamation was a relevant part of the design space because the curated alternatives still included reclamation- and bridge-based solutions. But once the feasible solution family narrowed to tunnel-based configurations, reclamation width could no longer remain a meaningful variable. At that point, the optimisation had to shift toward tunnel-specific design choices such as shaft setback, tunnel depth, and construction-phase effects. This showed that modelling is not just about writing equations once; it is an iterative process in which the design space must be reformulated when the real structure of the SoI becomes clearer.</p>
     </div>
 
+    <div class="reflection-item">
+      <h3>8.3 MCDA Was Useful, But It Was Not Enough on Its Own</h3>
+      <p>The MCDA was valuable because it made the stakeholder conflict in Section 6 visible and allowed the four curated alternatives to be compared transparently. However, it also showed the limitation of a-posteriori decision-making: it could only rank the alternatives that were already in the set. It could not search for a better configuration outside those predefined options. This is why the transition to the 2×2 and 4×6 open glass-box models was necessary. Those models allowed the project to move from comparing fixed variants to exploring the internal design space of the tunnel option itself, which is much closer to the a-priori design methodology promoted in the course.</p>
+    </div>
 
-<div class="reflection-item">
-  <h3>8.4 Convergence of Both Paradigms</h3>
-  <p>The two convergence plots tell fundamentally different stories, and understanding why they look so different is important for interpreting the results correctly.</p>
+    <div class="reflection-item">
+      <h3>8.4 The Modelling Helps Explain the Real Project, Not Just Imitate It</h3>
+      <p>A meaningful outcome of the project is not simply that the final model result points toward a tunnel, which is also what happened in reality. The more important point is that the modelling process helps explain why the real project moved in that direction. Once the Bridge became infeasible and reclamation was no longer acceptable, the design problem changed into a question of what kind of tunnel configuration best balances cost, beach-side impact, and environmental disturbance. In that sense, the 2×2 and 4×6 models do more than reproduce the final decision: they reveal the internal logic behind the real-life project trajectory of Section 6.</p>
+    </div>
 
-  <h4>GA minmax</h4>
-  <p>The minmax convergence curve shows the classic pattern of a well-functioning genetic algorithm. The best aggregated score drops steeply in the first five generations as the population rapidly discovers the profitable region of the design space, then slows through generations 7 to 17 as the algorithm switches from broad exploration to fine-grained exploitation, and finally stalls for ten consecutive generations before terminating at generation 23 with a final score of 12.13. The stall at a stable value is the intended stopping condition. It confirms the algorithm found a genuine local optimum and was not cut off prematurely. The score itself is negative because the GA internally minimises, so it is working with the negated group preference. A final score of 12.13 corresponds to a minimum preference floor of approximately 21 across all six objectives, which matches the O6 disturbance score reported in the results.</p>
+    <div class="reflection-item">
+      <h3>8.5 The Answer Is Specific to This Context, But the Method Is Transferable</h3>
+      <p>The final tunnel direction should not be interpreted as a universal conclusion that tunnels are always better than bridges or reclamation. It is the result of the very specific conditions of Mumbai Coastal Road Project Section 6: the social value of Juhu Beach, the coastal sensitivity of the site, and the airspace restriction imposed by Juhu Aerodrome. In another project without these conditions, a different alternative might become the preferred feasible solution. What is transferable from this study is not the tunnel itself, but the method: identify the real stakeholders, distinguish preferences from hard constraints, and adapt the model whenever the feasible design space changes.</p>
+    </div>
 
-  <h4>GA Tetra</h4>
-  <p>The Tetra convergence curve appears flat at 100 throughout all generations, which looks suspicious but is entirely expected. The Tetra web service is a ranking algorithm, not an absolute scorer. In each generation it receives the full population of candidate solutions, ranks them against each other, and returns 100 to the best individual and 0 to the worst. The GA therefore always sees its current best individual scored at 100 regardless of whether the population is improving. This means the score curve carries no information about whether the design space is being explored productively. What carries that information is the stability of the design variables across late generations. All Tetra generations from approximately generation 8 onwards return the same configuration: w=0, n near 5, d near 98 m. That stability is the convergence signal, and it is consistent with the minmax result confirming zero reclamation as the structural conclusion.</p>
-</div>
-   
-<div class="reflection-item">
-  <h3>8.5 Transferability: Would This Work Elsewhere?</h3>
-  <p>The PED methodology produced reliable results here because three conditions aligned that are not guaranteed elsewhere. Stakeholder groups were institutionally nameable and their preferences mappable onto quantifiable objectives. The primary regulatory constraint was geometrically precise rather than politically negotiable. And the design variables were genuinely continuous within a bounded feasible space. These conditions did not arise by accident; they reflect a problem that had already been substantially structured through the DPR process before this analysis began.</p>
-  <p>For the methodology to function honestly in a different context, the same three conditions must be assessed before the model is built, not after. First, can the affected stakeholder groups actually be identified and distinguished, and are the most vulnerable among them institutionally visible enough to receive a meaningful preference weight? Second, are the regulatory constraints fixed and encodable, or are they subject to discretionary interpretation that sits outside the model? Third, do the design variables have genuine degrees of freedom, or has the alternative set already been politically narrowed before the analysis begins as it was here with shaft setback?</p>
-  <p>Where all three hold, the framework transfers. Where one or more is absent, the model can still be built, but its outputs will carry assumptions that the mathematics will not flag and that only an honest problem framing will reveal.</p>
-</div>
-   
+    <div class="reflection-item">
+      <h3>Concluding Reflection</h3>
+      <p>Overall, the most important lesson from this project is that good engineering design is not about maximising one score or defending one early preference. It is about continuously improving the model so that it reflects the real design problem more honestly. In this case, that meant moving from a stakeholder-based ranking of discrete alternatives to a tunnel-feasible design-space exploration, and from abstract preference comparison to a more realistic understanding of feasibility, trade-offs, and real project constraints. That is what made the final ODL response stronger and more aligned with the intention of the course.</p>
+    </div>
+
+  </div>
+</section>
 
     <h3>8.6 Model Limitations</h3>
     <div class="critique-grid">
