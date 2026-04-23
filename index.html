@@ -612,10 +612,33 @@
 
     </div>
 
-    <h3>Purpose and Structure</h3>
-    <p>The 2×2 model is primarily valuable for analytical and visual purposes. Because it contains only two design variables, the entire design space can be represented as a contour plot and the full Pareto frontier can be computed explicitly. Such complete visualisation and exhaustive representation are not possible in the full four-dimensional model.</p>
-    <p><strong>Two design variables:</strong> reclamation width w [0–85 m] and shaft setback distance d [15–120 m]. <strong>Two objectives:</strong> O2 construction cost (BMC, weight 0.50) and O3 beach retention (BRH, weight 0.50) — the most directly conflicting pair in Section 6.</p>
+    <div style="display:flex;flex-direction:column;gap:0;margin:32px 0;">
 
+  <div style="padding:24px 28px;border:1px solid #ddd8cf;background:#fff;border-bottom:none;">
+    <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#b07d3a;margin-bottom:10px;">Transition from MCDA to Optimisation</div>
+    <p style="font-size:14px;color:#4a4a4a;line-height:1.75;margin:0;">The MCDA was used as an a-posteriori screening step to compare the four curated planning alternatives and to make the stakeholder trade-offs explicit. However, once the AAI airspace constraint excluded the Bridge alternative, the feasible design space narrowed to tunnel-based configurations. At that point, the problem changed from selecting between discrete alternatives to optimising the remaining continuous tunnel design decisions. For this reason, a preliminary 2×2 open glass-box model was developed as the first optimisation step.</p>
+  </div>
+
+  <div style="padding:24px 28px;border:1px solid #ddd8cf;background:#faf8f4;border-bottom:none;">
+    <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#b07d3a;margin-bottom:10px;">Purpose of the 2×2 Model</div>
+    <p style="font-size:14px;color:#4a4a4a;line-height:1.75;margin:0;">The 2×2 model is intentionally simplified. Its purpose is not to capture the full complexity of Section 6, but to reveal the first internal trade-off within the tunnel-feasible design space. The model focuses on two conflicting objectives — construction cost and construction disturbance — and on the two tunnel design variables that influence them most directly.</p>
+  </div>
+
+  <div style="padding:24px 28px;border:1px solid #ddd8cf;background:#fff;">
+    <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#b07d3a;margin-bottom:10px;">Why These Variables</div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div style="display:flex;gap:16px;align-items:flex-start;">
+        <div style="font-family:monospace;font-size:14px;font-weight:700;color:#0f2d48;background:#f4f1eb;padding:4px 10px;flex-shrink:0;border-left:3px solid #b07d3a;">d</div>
+        <p style="font-size:14px;color:#4a4a4a;line-height:1.75;margin:0;">A larger shaft setback distance moves the shaft works farther away from the beach interface, which reduces visible and spatial disturbance for beach users, residents, and nearby activities. However, this also increases the cost of access and adit construction.</p>
+      </div>
+      <div style="display:flex;gap:16px;align-items:flex-start;">
+        <div style="font-family:monospace;font-size:14px;font-weight:700;color:#0f2d48;background:#f4f1eb;padding:4px 10px;flex-shrink:0;border-left:3px solid #b07d3a;">z</div>
+        <p style="font-size:14px;color:#4a4a4a;line-height:1.75;margin:0;">A greater tunnel depth reduces surface nuisance such as vibration and localised disturbance, but it also increases tunnelling cost because deeper excavation requires more complex construction and waterproofing measures.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
     <img src="design_space_2x2_mumbai.png" alt="Design space contour plot" style="width:100%;height:auto;display:block;">
 
   </div>
