@@ -712,50 +712,49 @@
     </table>
    
     <h3>Objective Functions</h3>
-    <div class="obj-grid">
-      <div class="obj-card">
-        <span class="obj-code">O1 · BMC</span>
-        <h4>Traffic Throughput</h4>
-        <div class="obj-formula">f₁ = n × 1800 [PCU/hr]</div>
-        <p>HCM standard: 1,800 PCU/lane/hr at design speed. Linear in n — each lane adds exactly one lane-capacity. Takes only x₂ as argument.</p>
-      </div>
-      <div class="obj-card">
-        <span class="obj-code">O2 · BMC</span>
-        <h4>Construction Cost</h4>
-        <div class="obj-formula">f₂ = 280 + 85n + 420(w/85) + 0.8d [Cr/km]</div>
-        <p>Baseline 280 Cr/km (DPR tunnel). +85n for lane widening. +420(w/85) for reclamation premium. +0.8d for longer adits at INR 0.8 Cr/km/metre.</p>
-      </div>
-      <div class="obj-card">
-        <span class="obj-code">O3 · BRH</span>
-        <h4>Beach Width Retained</h4>
-        <div class="obj-formula">f₃ = max(0, (55−w)/55) × 100 [%]</div>
-        <p>Original Juhu Beach width = 55 m. Linear in w: every metre of reclamation removes one metre of beach. Clamped to zero beyond w=55 m.</p>
-      </div>
-      <div class="obj-card">
-        <span class="obj-code">O4 · BRH </span>
-        <h4>Sea-View Openness</h4>
-        <div class="obj-formula">f₄ = 10 × (1−w/85) × (1−exp(−0.05d))</div>
-        <p>Corrected from original formulation which penalised larger d. Now correctly: as d increases, (1−exp(−0.05d)) increases toward 1, giving higher sea-view score for more distant shafts. At d=60m, f₄=9.50 (sanity check confirms correctness).</p>
-      </div>
-      <div class="obj-card">
-        <span class="obj-code">O5 · ENV</span>
-        <h4>Reclamation Footprint</h4>
-        <div class="obj-formula">f₅ = w × L × 1000 [m²]</div>
-        <p>Total permanent coastal area lost. At maximum (w=85m, L=3.2km): 272,000 m² = 27 hectares. Zero for any tunnel configuration regardless of span length.</p>
-      </div>
-      <div class="obj-card">
-        <span class="obj-code">O6 · ENV</span>
-        <h4>Construction Disturbance</h4>
-        <div class="obj-formula">f₆ = 0.4(w/85)×10 + 0.6(1−d/120)×10</div>
-        <p>Composite: 40% reclamation activity disturbance (marine ecology) + 60% shaft proximity disturbance (beach visitor experience). Larger d reduces the proximity component; zero reclamation eliminates the first component entirely.</p>
-      </div>
-    </div>
-
+<div class="obj-grid">
+  <div class="obj-card">
+    <span class="obj-code">O1 · BMC</span>
+    <h4>Traffic Throughput</h4>
+    <div class="obj-formula">max f₁(n) = 1800n</div>
+    <p>HCM standard: 1,800 PCU/lane/hr at design speed. Linear in n — each lane adds exactly one lane-capacity. Takes only n as argument.</p>
+  </div>
+  <div class="obj-card">
+    <span class="obj-code">O2 · BMC</span>
+    <h4>Construction Cost</h4>
+    <div class="obj-formula">min f₂(n,d,z,L&#8346;) = 280L&#8346; + 85(n−4)L&#8346; + 0.8d + 12(z−10)L&#8346;</div>
+    <p>Baseline 280 Cr/km scaled by tunnelled length. Lane premium +85(n−4) per km. Shaft adit cost +0.8d. Depth premium +12(z−10) per km of tunnel.</p>
+  </div>
+  <div class="obj-card">
+    <span class="obj-code">O3 · BRH</span>
+    <h4>Surface Noise / Vibration Nuisance</h4>
+    <div class="obj-formula">min f₃(z) = 10e<sup>−0.08(z−10)</sup></div>
+    <p>Exponential decay in tunnel depth. Shallower tunnels transmit more vibration and surface nuisance to beach users and residents. Deeper alignment reduces this impact rapidly.</p>
+  </div>
+  <div class="obj-card">
+    <span class="obj-code">O4 · BRH</span>
+    <h4>Sea-View Openness</h4>
+    <div class="obj-formula">max f₄(d) = 10(1 − e<sup>−0.05d</sup>)</div>
+    <p>As shaft setback d increases, the exponential term decreases toward zero, giving a higher sea-view openness score. Larger setbacks reduce the visual intrusion of shaft structures near the beach edge.</p>
+  </div>
+  <div class="obj-card">
+    <span class="obj-code">O5 · BRH/ENV</span>
+    <h4>Construction Disturbance</h4>
+    <div class="obj-formula">min f₅(d,z,L&#8346;) = 10[0.5(1−d̂) + 0.2(1−ẑ) + 0.3L̂]</div>
+    <p>Composite disturbance score weighted across three drivers: shaft proximity to the beach (50%), tunnel shallowness causing surface impact (20%), and tunnelled frontage length driving overall construction duration (30%).</p>
+  </div>
+  <div class="obj-card">
+    <span class="obj-code">O6 · ENV</span>
+    <h4>Marine Ecology Disturbance</h4>
+    <div class="obj-formula">min f₆(d,L&#8346;) = 10[0.7(1−d̂) + 0.3L̂]</div>
+    <p>Weighted combination of shaft proximity to the coastal edge (70%) and tunnelled frontage length (30%). Larger setbacks and shorter tunnelled lengths reduce the ecological disturbance footprint in the intertidal zone.</p>
+  </div>
+</div>
 
     <h3>Preference Functions</h3>
-    <p>Each raw objective value is converted to a Tetra ratio-scale preference score P ∈ [0, 100] using three calibration points and PCHIP (Piecewise Cubic Hermite Interpolating Polynomial) interpolation guaranteed monotone, non-overshooting. All functions are clipped to [0, 100] to prevent extrapolation beyond calibration bounds. For inverted objectives (O2, O5, O6), x-values are listed ascending with y-values reversed.</p>
-
-    <img src="preference_curves_mumbai.png" alt="Preference curve for all objectives" style="width:100%;height:auto;display:block;">
+<p>Each raw objective value is converted to a Tetra ratio-scale preference score P ∈ [0, 100] using PCHIP (Piecewise Cubic Hermite Interpolating Polynomial) interpolation, which guarantees monotone, non-overshooting curves. For inverted objectives — construction cost (O2), construction disturbance (O5), and marine ecology disturbance (O6) — lower raw values map to higher preference scores. A P=30 reference line is shown on each curve as the calibration threshold.</p>
+<img src="preference function 4by6.png" alt="Preference functions for all six objectives — Mumbai Coastal Road Tunnel 4×6 Model" style="width:100%;height:auto;display:block;margin:20px 0 0;">
+<p style="font-size:13px;color:#6b6b6b;border-left:3px solid #b07d3a;padding:6px 14px;background:#f8f6f1;margin-top:0;">Preference curves for all six objectives. O1 (throughput) and O4 (sea-view) are maximised; O2 (cost), O3 (surface noise), O5 (disturbance), and O6 (marine ecology) are inverted — lower raw scores yield higher preference.</p>
 
     <h3>Weights and Constraints</h3>
 
