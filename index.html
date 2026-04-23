@@ -542,8 +542,21 @@
 <div class="container">
 
   <p>After the MCDA and the application of the AAI airspace constraint, the feasible solution space narrows to tunnel-based configurations. The preliminary 2×2 model is therefore introduced as the first open glass-box optimisation step to explore the key remaining trade-off within this tunnel-feasible space. Rather than modelling the full problem immediately, the 2×2 formulation focuses on the main continuous conflict between reducing project cost and limiting beach-side construction impact.</p>
+ 
+<h3>A-Posteriori Limitation</h3>
+<p>The MCDA framework selects from four predefined alternatives, but it does not examine whether any of these alternatives represents the best possible configuration within its broader structural category. In all four cases, the ventilation shaft setback was implicitly assumed to remain close to the DPR minimum of 25 m. As a result, the analysis did not consider whether larger setbacks such as 50 m, 70 m, or 100 m might lead to a more preferred outcome from a group decision-making perspective. This limitation provides the direct rationale for introducing the a priori optimisation models developed in Sections 5 and 6.</p>
+  </div>
+</section>
 
-  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin:28px 0;">
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- 5. 2×2 MODEL -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<section id="model2x2">
+  <div class="container">
+    <div class="section-eyebrow"><span class="section-number">05</span><span class="section-label-text">model2x2</span></div>
+    <div class="gold-rule"></div>
+    <h2>Preliminary 2×2 Optimisation Model</h2>
+     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin:28px 0;">
 
     <div style="border:1px solid #ddd8cf;background:#fff;overflow:hidden;">
       <div style="background:#0f2d48;padding:10px 16px;">
@@ -599,20 +612,6 @@
   </div>
 
 </div>
- 
-<h3>A-Posteriori Limitation</h3>
-<p>The MCDA framework selects from four predefined alternatives, but it does not examine whether any of these alternatives represents the best possible configuration within its broader structural category. In all four cases, the ventilation shaft setback was implicitly assumed to remain close to the DPR minimum of 25 m. As a result, the analysis did not consider whether larger setbacks such as 50 m, 70 m, or 100 m might lead to a more preferred outcome from a group decision-making perspective. This limitation provides the direct rationale for introducing the a priori optimisation models developed in Sections 5 and 6.</p>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════════════════ -->
-<!-- 5. 2×2 MODEL -->
-<!-- ══════════════════════════════════════════════════════════════ -->
-<section id="model2x2">
-  <div class="container">
-    <div class="section-eyebrow"><span class="section-number">05</span><span class="section-label-text">model2x2</span></div>
-    <div class="gold-rule"></div>
-    <h2>Preliminary 2×2 Optimisation Model</h2>
 
     <h3>Purpose and Structure</h3>
     <p>The 2×2 model is primarily valuable for analytical and visual purposes. Because it contains only two design variables, the entire design space can be represented as a contour plot and the full Pareto frontier can be computed explicitly. Such complete visualisation and exhaustive representation are not possible in the full four-dimensional model.</p>
