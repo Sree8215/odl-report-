@@ -670,17 +670,47 @@
     <div class="gold-rule"></div>
     <h2>Full 4-Variable 6-Objective Optimisation Model</h2>
 
+    <h3>Optimisation Problem</h3>
+    <p>After the preliminary 2×2 model, the optimisation was extended to a <strong>4×6 formulation</strong> to capture a broader part of the tunnel-feasible design space. The purpose of this model is to include the main remaining concerns of <strong>BMC, BRH, and ENV</strong> within one preference-based framework, while keeping the Bridge excluded through the AAI hard constraint.</p>
+
     <h3>Design Variables</h3>
+    <p>The extended model uses four design variables:</p>
     <table class="var-table">
-      <thead><tr><th>Symbol</th><th>Variable</th><th>Description</th><th>Lower</th><th>Upper</th></tr></thead>
+      <thead>
+        <tr><th>Symbol</th><th>Variable</th><th>Description</th><th>Lower</th><th>Upper</th></tr>
+      </thead>
       <tbody>
-        <tr><td>x₁ = L</td><td>Span length [km]</td><td>Effective length of main structure. 1.8 km = minimum to cover Juhu Beach frontage; longer spans protect more beach but cost more.</td><td>1.8 km</td><td>3.2 km</td></tr>
-        <tr><td>x₂ = n</td><td>Lanes per direction</td><td>Traffic lanes each direction. 3 = MCRP mandate minimum; 5 = structural and CRZ maximum. Continuous; rounded for interpretation.</td><td>3</td><td>5</td></tr>
-        <tr><td>x₃ = w</td><td>Reclamation width [m]</td><td>Lateral footprint from beach edge. w=0 is pure bored tunnel; w>30 approaches bridge/elevated structure. Upper bound 85 m = CRZ-II limit.</td><td>0 m</td><td>85 m</td></tr>
-        <tr><td>x₄ = d</td><td>Shaft setback [m]</td><td>Horizontal distance of ventilation shafts from beach edge. DPR minimum ~25 m. The key novel design variable absent from all curated MCDA alternatives.</td><td>15 m</td><td>120 m</td></tr>
+        <tr>
+          <td>x₁ = n</td>
+          <td>Lane-equivalent capacity</td>
+          <td>Number of traffic lanes per direction. Sets the throughput capacity of the tunnel corridor.</td>
+          <td>3</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td>x₂ = d</td>
+          <td>Shaft setback distance [m]</td>
+          <td>Horizontal distance of ventilation shafts from the beach edge. Larger setback reduces beach-side disturbance but increases adit construction cost.</td>
+          <td>15 m</td>
+          <td>120 m</td>
+        </tr>
+        <tr>
+          <td>x₃ = z</td>
+          <td>Tunnel axis depth [m]</td>
+          <td>Depth of the tunnel centreline below surface. Greater depth reduces surface nuisance but increases tunnelling cost and complexity.</td>
+          <td>10 m</td>
+          <td>40 m</td>
+        </tr>
+        <tr>
+          <td>x₄ = L<sub>t</sub></td>
+          <td>Tunnelled frontage length [km]</td>
+          <td>Length of the tunnelled section covering the Juhu Beach frontage. Longer spans protect more beach but increase total construction cost.</td>
+          <td>1.8 km</td>
+          <td>3.2 km</td>
+        </tr>
       </tbody>
     </table>
-
+   
     <h3>Objective Functions</h3>
     <div class="obj-grid">
       <div class="obj-card">
