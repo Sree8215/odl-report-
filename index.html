@@ -913,11 +913,10 @@
 
     <h3>Equal-Weight Case</h3>
     <p>The extended 4×6 model is first run under equal stakeholder weighting as a neutral baseline, where BMC, BRH, and ENV each receive a weight of 0.333. This case is not meant to represent the real project exactly. Its purpose is to provide a transparent reference for understanding how the tunnel-feasible design space behaves before introducing project-specific stakeholder influence.</p>
-    <p>The purpose of this optimised preference curve is to show where the optimiser is rewarded and where it is penalised. Throughput and sea-view openness gain preference as they increase, while cost, noise and vibration, construction disturbance, and marine ecology disturbance lose preference as they increase. The shape of each curve matters. Steep sections indicate ranges where even a small design change has a strong effect on stakeholder preference, while flatter sections show where further improvement adds relatively little value. In other words, the curves do not just rescale the objectives instead they express how strongly stakeholders react to change in each objective.</p>
 
     <img src="optm result equal weight.png" alt="Equal weight optimisation result" style="width:100%;height:auto;display:block;margin:20px 0 0;">
-    <p style="font-size:13px;color:#6b6b6b;border-left:3px solid #b07d3a;padding:6px 14px;background:#f8f6f1;margin:0 0 24px;">Optimisation result under equal stakeholder weighting and preference scores across all six objectives at the identified optimal configuration.</p>
-    <p>The equal-weight result shows where the identified tunnel optimum sits on the six preference curves. The main pattern is clear: throughput, sea-view, and noise/vibration are already satisfied at a high level, while cost absorbs most of the compromise. This means that even under a neutral weighting assumption, the tetra paradigm is willing to accept a more expensive tunnel if that leads to much stronger beach-side and environmental performance.</p>
+    <p style="font-size:13px;color:#6b6b6b;border-left:3px solid #b07d3a;padding:6px 14px;background:#f8f6f1;margin:0 0 24px;">Optimisation result under equal stakeholder weighting, showing the preference scores of the identified tunnel optimum across all six objectives.</p>
+    <p>The equal-weight result shows where the identified tunnel optimum sits on the six preference curves. The main pattern is clear: throughput, sea-view, and noise/vibration are already satisfied at a high level, while cost absorbs most of the compromise. This means that even under a neutral weighting assumption, the model is willing to accept a more expensive tunnel if that leads to much stronger beach-side and environmental performance.</p>
 
     <div class="chart-card-full" style="margin-top:28px;">
       <h3>GA Minmax - Equal Weights Preference Score Breakdown</h3>
@@ -925,8 +924,7 @@
       <canvas id="minmaxEqualScores" height="70"></canvas>
     </div>
     <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border);">
-      <p style="margin-bottom:12px;">Under equal weighting, the minmax solution should be read as the most balanced compromise rather than the highest-scoring design overall. The algorithm works by improving the weakest-performing objective as much as possible, so the final profile is more even across the six objectives. This means that no stakeholder perspective is allowed to fall too far behind, even if this prevents the optimiser from achieving a higher overall group score. The chart therefore represents a fairer but more conservative solution, where the weakest objective is protected rather than sacrificed for gains elsewhere.</p>
-      <p>The model prefers a tunnel configuration with high capacity, large shaft setback, and deep alignment, indicating that reducing beach-side impact remains more valuable than minimising cost alone when all groups are treated equally.</p>
+      <p style="margin-bottom:12px;">Under equal weighting, the Minmax paradigm should be interpreted as the most balanced compromise. Its purpose is to raise the weakest-performing objective as much as possible, which produces a tighter and more even spread of scores across the six objectives. In this case, the Minmax solution confirms a tunnel configuration with high capacity, large shaft setback, and deep alignment, but without allowing any single objective to fall too far behind.</p>
     </div>
 
     <div class="chart-card-full" style="margin-top:28px;">
@@ -935,7 +933,7 @@
       <canvas id="tetraEqualScores" height="70"></canvas>
     </div>
     <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border);">
-      <p style="margin-bottom:12px;">Under equal weighting, the Tetra result should be interpreted as the design that maximises total group preference. Unlike minmax, it is willing to accept a weaker score on one objective if that produces stronger gains across the others. In the chart, this usually appears as a lower cost-preference score alongside much stronger BRH and ENV-related performance. The result shows that when all stakeholder groups are given equal influence, the optimiser is prepared to accept a cost penalty in order to achieve a much better overall performance in beach-side and environmental objectives.</p>
+      <p style="margin-bottom:12px;">Under equal weighting, the Tetra solution should be read as the design that maximises total group preference. Unlike Minmax, it is willing to accept a lower score on one objective if that creates larger gains elsewhere. In this case, cost becomes the main sacrificial objective, while the non-cost objectives remain very strong. This shows that, under equal weighting, the model collectively values reduced beach-side and environmental impact more than minimising construction cost alone.</p>
       
     </div>
 
@@ -980,7 +978,7 @@
       <canvas id="minmaxRealScores" height="70"></canvas>
     </div>
     <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border);">
-      <p style="margin-bottom:12px;">After switching to the realistic stakeholder weights, the minmax result changes only slightly. BMC-related objectives become somewhat more influential, so cost and capacity gain slightly more importance, but the overall design direction remains almost the same. This is the main point the chart should communicate: the balanced solution is robust. Even after adjusting the weights to reflect the real project context, the model still converges toward the same general tunnel configuration rather than shifting to a fundamentally different design.</p>
+      <p style="margin-bottom:12px;">Under realistic weighting, the Minmax result changes only slightly. BMC-related objectives become somewhat more influential, which makes cost and throughput slightly more binding, but the overall design region remains almost unchanged. The model still converges toward the same broad tunnel configuration of high capacity, large shaft setback, and deep alignment. This indicates that the balanced Minmax solution is robust to moderate weight adjustment.</p>
       
     </div>
 
@@ -999,20 +997,7 @@
     <p>What does change is the relative interpretation of the trade-off. Under realistic weighting, BMC-related objectives gain slightly more influence, so cost and throughput become somewhat more important in the aggregation. However, this is not enough to overturn the strong preference for protecting the beach interface and reducing environmental impact. The result therefore suggests that the tunnel direction is supported more by the internal structure of the Section 6 problem than by any one specific weight assumption.</p>
 
     <h3>Comparison: A-Priori Optimum vs A-Posteriori MCDA</h3>
-    <div class="note-box"><strong>Note on mixed scoring systems:</strong> MCDA alternatives A1–A4 are scored through Tetra SDM human-assigned ratings. The a-priori optima are scored through mathematical preference functions. These are two legitimate but different scoring approaches — see Section 8 for the interpretation.</div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Alternative</th><th>P_BMC</th><th>P_BRH</th><th>P_ENV</th><th>P_group</th></tr></thead>
-        <tbody>
-          <tr><td>A1 – Straight Tunnel (DPR preferred)</td><td>55.5</td><td>100.0</td><td>90.0</td><td>69.1</td></tr>
-          <tr><td>A2 – Reclamation</td><td>78.0</td><td>0.0</td><td>2.5</td><td>24.0</td></tr>
-          <tr><td>A3 – Bridge / Sea-link</td><td>65.6</td><td>80.0</td><td>97.5</td><td>68.1</td></tr>
-          <tr><td>A4 – Cut-and-Cover</td><td>57.8</td><td>91.0</td><td>65.0</td><td>60.9</td></tr>
-          <tr><td>A-priori optimum (equal weights)</td><td>[insert]</td><td>[insert]</td><td>[insert]</td><td>[insert]</td></tr>
-          <tr class="td-best"><td><strong>A-priori optimum (realistic weights) ◄</strong></td><td><strong>[insert]</strong></td><td><strong>[insert]</strong></td><td><strong>[insert]</strong></td><td><strong>[insert]</strong></td></tr>
-        </tbody>
-      </table>
-    </div>
+    <p>The comparison between the MCDA alternatives and the a-priori optima shows that the main contribution of the optimisation stage is not simply to repeat the tunnel choice, but to strengthen it. The MCDA treated the tunnel as one fixed alternative among several curated options, whereas the a-priori model opened the tunnel-feasible design space and identified a more preferred configuration within that family. This means that the final result is not just “the tunnel wins,” but rather that the tunnel becomes more convincing once its internal design variables are optimized and the infeasible alternatives are removed from the problem.</p>
 
   </div>
 </section>
