@@ -612,77 +612,50 @@
 
     </div>
 
-    <div style="display:flex;flex-direction:column;gap:0;margin:32px 0;">
+    <div class="container">
 
-  <div style="padding:24px 28px;border:1px solid #ddd8cf;background:#fff;border-bottom:none;">
-    <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#b07d3a;margin-bottom:10px;">Transition from MCDA to Optimisation</div>
-    <p style="font-size:14px;color:#4a4a4a;line-height:1.75;margin:0;">The MCDA was used as an a-posteriori screening step to compare the four curated planning alternatives and to make the stakeholder trade-offs explicit. However, once the AAI airspace constraint excluded the Bridge alternative, the feasible design space narrowed to tunnel-based configurations. At that point, the problem changed from selecting between discrete alternatives to optimising the remaining continuous tunnel design decisions. For this reason, a preliminary 2×2 open glass-box model was developed as the first optimisation step.</p>
-  </div>
+  <div style="display:flex;flex-direction:column;gap:0;margin:32px 0;">
 
-  <div style="padding:24px 28px;border:1px solid #ddd8cf;background:#faf8f4;border-bottom:none;">
-    <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#b07d3a;margin-bottom:10px;">Purpose of the 2×2 Model</div>
-    <p style="font-size:14px;color:#4a4a4a;line-height:1.75;margin:0;">The 2×2 model is intentionally simplified. Its purpose is not to capture the full complexity of Section 6, but to reveal the first internal trade-off within the tunnel-feasible design space. The model focuses on two conflicting objectives — construction cost and construction disturbance — and on the two tunnel design variables that influence them most directly.</p>
-  </div>
+    <div style="padding:24px 28px;border:1px solid #ddd8cf;background:#fff;border-bottom:none;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#b07d3a;margin-bottom:10px;">Transition from MCDA to Optimisation</div>
+      <p style="font-size:14px;color:#4a4a4a;line-height:1.75;margin:0;">The MCDA was used as an a-posteriori screening step to compare the four curated planning alternatives and to make the stakeholder trade-offs explicit. However, once the AAI airspace constraint excluded the Bridge alternative, the feasible design space narrowed to tunnel-based configurations. At that point, the problem changed from selecting between discrete alternatives to optimising the remaining continuous tunnel design decisions. For this reason, a preliminary 2×2 open glass-box model was developed as the first optimisation step.</p>
+    </div>
 
-  <div style="padding:24px 28px;border:1px solid #ddd8cf;background:#fff;">
-    <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#b07d3a;margin-bottom:10px;">Why These Variables</div>
-    <div style="display:flex;flex-direction:column;gap:12px;">
-      <div style="display:flex;gap:16px;align-items:flex-start;">
-        <div style="font-family:monospace;font-size:14px;font-weight:700;color:#0f2d48;background:#f4f1eb;padding:4px 10px;flex-shrink:0;border-left:3px solid #b07d3a;">d</div>
-        <p style="font-size:14px;color:#4a4a4a;line-height:1.75;margin:0;">A larger shaft setback distance moves the shaft works farther away from the beach interface, which reduces visible and spatial disturbance for beach users, residents, and nearby activities. However, this also increases the cost of access and adit construction.</p>
-      </div>
-      <div style="display:flex;gap:16px;align-items:flex-start;">
-        <div style="font-family:monospace;font-size:14px;font-weight:700;color:#0f2d48;background:#f4f1eb;padding:4px 10px;flex-shrink:0;border-left:3px solid #b07d3a;">z</div>
-        <p style="font-size:14px;color:#4a4a4a;line-height:1.75;margin:0;">A greater tunnel depth reduces surface nuisance such as vibration and localised disturbance, but it also increases tunnelling cost because deeper excavation requires more complex construction and waterproofing measures.</p>
+    <div style="padding:24px 28px;border:1px solid #ddd8cf;background:#faf8f4;border-bottom:none;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#b07d3a;margin-bottom:10px;">Purpose of the 2×2 Model</div>
+      <p style="font-size:14px;color:#4a4a4a;line-height:1.75;margin:0;">The 2×2 model is intentionally simplified. Its purpose is not to capture the full complexity of Section 6, but to reveal the first internal trade-off within the tunnel-feasible design space. The model focuses on two conflicting objectives — construction cost and construction disturbance — and on the two tunnel design variables that influence them most directly.</p>
+    </div>
+
+    <div style="padding:24px 28px;border:1px solid #ddd8cf;background:#fff;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#b07d3a;margin-bottom:10px;">Why These Variables</div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="display:flex;gap:16px;align-items:flex-start;">
+          <div style="font-family:monospace;font-size:14px;font-weight:700;color:#0f2d48;background:#f4f1eb;padding:4px 10px;flex-shrink:0;border-left:3px solid #b07d3a;">d</div>
+          <p style="font-size:14px;color:#4a4a4a;line-height:1.75;margin:0;">A larger shaft setback distance moves the shaft works farther away from the beach interface, which reduces visible and spatial disturbance for beach users, residents, and nearby activities. However, this also increases the cost of access and adit construction.</p>
+        </div>
+        <div style="display:flex;gap:16px;align-items:flex-start;">
+          <div style="font-family:monospace;font-size:14px;font-weight:700;color:#0f2d48;background:#f4f1eb;padding:4px 10px;flex-shrink:0;border-left:3px solid #b07d3a;">z</div>
+          <p style="font-size:14px;color:#4a4a4a;line-height:1.75;margin:0;">A greater tunnel depth reduces surface nuisance such as vibration and localised disturbance, but it also increases tunnelling cost because deeper excavation requires more complex construction and waterproofing measures.</p>
+        </div>
       </div>
     </div>
+
   </div>
-    <h3>Preference Curves</h3>
-    <p>Since the 2×2 model contains one cost objective and one disturbance objective, equal weights are used as a neutral baseline</p>
+
+  <h3>Preference Curves</h3>
+  <p>Since the 2×2 model contains one cost objective and one disturbance objective, equal weights are used as a neutral baseline.</p>
+  <img src="preference fntn 2by2.png" alt="Preference curves for the 2×2 model" style="width:100%;height:auto;display:block;margin:20px 0 40px;">
+
+  <h3>Contour Plot</h3>
+  <img src="Design space.png" alt="Contour plot of design space" style="width:100%;height:auto;display:block;margin:20px 0 20px;">
+  <p>The contour plot shows the combined preference across the (d, z) design space. Preference improves most strongly with increasing shaft setback distance, while tunnel depth provides additional but weaker improvement. The best feasible region is therefore located at high d and moderate-to-high z.</p>
+
+  <h3>Pareto Front — The Structural Proof</h3>
+  <img src="pareto front.png" alt="Pareto front plot" style="width:100%;height:auto;display:block;margin:20px 0 20px;">
+  <p>The Pareto front shows the efficient trade-off between construction cost and construction disturbance. Along this front, improving one objective further can only be achieved by sacrificing the other.</p>
+
 </div>
-    <img src="design_space_2x2_mumbai.png" alt="Design space contour plot" style="width:100%;height:auto;display:block;">
-
-  </div>
-</section>
-
-    <h3>What the contour plot shows</h3>
-    <p>The contour plot maps group preference P_group across every feasible combination of reclamation width w and shaft setback d simultaneously which is only possible with two design variables. Three things are immediately readable from the colour field before any optimisation is run.</p>
-    <p>The green zone is concentrated along the left edge of the plot where w=0. Moving rightward, increasing reclamation and the colour shifts from green through yellow into red regardless of what value d takes. This means the cost–beach trade-off in the [w,d] space has a clear dominant direction: stay at zero reclamation.</p>
-    <p>Within the green zone at w=0, the colour is slightly darker at the bottom (small d) and slightly lighter toward the top (large d). This gradient shows that in a model with only cost and beach retention as objectives, larger shaft setback only adds cost without improving either objective, so the contour rewards smaller d.</p>
-    <p>The feasibility boundary overlay on the right panel shows where the budget constraint and AAI height limit bind. All configurations with w greater than approximately 50 m become budget-constrained, and the dotted boundary at w=30 m marks where bridge-type structures trigger the airspace height check.</p>
-
-    <h3>Pareto Front — The Structural Proof</h3>
-   <img src="pareto_front_2x2_mumbai.png" alt="Pareto front plot" style="width:90%;height:auto;display:block;">
-    <p><strong>Every solution on the Pareto front has w=0.</strong>not approximately, but exactly zero. In other words, no reclamation configuration appears on the non-dominated frontier under equal weighting of BMC and BRH. This shows that, for any equal or near-equal weighting, there is always a tunnel configuration that achieves equal or lower cost while also providing equal or greater beach retention than any reclamation-based alternative. Reclamation therefore does not constitute a genuine trade-off; it is strictly dominated.</p>
-    <p>This result is structural rather than sensitivity-dependent. It also explains analytically why Reclamation (A2) ranks last in every MCDA scenario. The MCDA was effectively rediscovering this Pareto dominance through changes in numerical weights, whereas the 2×2 model demonstrates the same conclusion directly in geometric terms.</p>
-    <h3>Optimisation Results and the Key Limitation</h3>
-<div class="result-callout">
-  <div class="result-stat">
-    <div class="rs-label">w — reclamation</div>
-    <div class="rs-value">0.0 m</div>
-    <div class="rs-note">All three paradigms agree</div>
-  </div>
-  <div class="result-stat">
-    <div class="rs-label">d — shaft setback</div>
-    <div class="rs-value">15.0 m</div>
-    <div class="rs-note">Cost-minimising optimum</div>
-  </div>
-  <div class="result-stat">
-    <div class="rs-label">P_group (2×2)</div>
-    <div class="rs-value">64.1</div>
-    <div class="rs-note">Equal 50/50 BMC / BRH</div>
-  </div>
-  <div class="result-stat">
-    <div class="rs-label">Paradigm agreement</div>
-    <div class="rs-value">3 / 3</div>
-    <div class="rs-note">minmax · Tetra · scipy WM</div>
-  </div>
-</div>
-    <p><p>All three paradigms converge on the same result: zero reclamation and the minimum feasible shaft setback. The w=0 result is the central finding confirmed analytically by the Pareto front and numerically by all three aggregation approaches. The d=15 m result is equally correct within the scope of this model: with construction cost penalising every additional metre of setback and neither objective rewarding it, the optimiser places the shaft as close to the beach as the constraint allows.</p>
-
-  <img src="sensitivity_2x2_mumbai.png" alt="Sensitivity Analysis plot" style="width:100%;height:auto;display:block;">
-
-  </div>
+  
 </section>
 
 <!-- ══════════════════════════════════════════════════════════════ -->
