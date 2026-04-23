@@ -1037,36 +1037,40 @@
     <h3>8.6 Model Limitations</h3>
     <div class="critique-grid">
       <div class="critique-item">
-        <h4>Cost function linearity</h4>
-        <p>f₂ is linear in d, but real shaft construction costs are stepped and each shaft involves non-proportional fixed costs (grouting, waterproofing, electrical, emergency provisions) beyond the simple 0.8 Cr/km/metre linear penalty. Linearity understates marginal cost at very large setback values.</p>
+        <h4>Preference curves are calibrated rather than empirically validated.</h4>
+        <p>The preference functions reflect reasoned stakeholder assumptions, but they were not estimated from survey or interview data. The model therefore represents plausible preference structure rather than measured stakeholder behavior.</p>
       </div>
       <div class="critique-item">
-        <h4>O4 decay coefficient not validated</h4>
-        <p>The coefficient 0.05 per metre in the sea-view function is analytically chosen, not empirically validated. A value of 0.03 or 0.08 would shift the optimal d substantially. This is the single highest-priority parameter for empirical stakeholder validation.</p>
+        <h4>Stakeholder weights remain judgement-based.</h4>
+        <p>Both the equal-weight and realistic-weight cases rely on modelling assumptions about stakeholder influence. Even when grounded in project context, these weights are interpretive rather than objective facts.</p>
       </div>
       <div class="critique-item">
-        <h4>Span length lacks preference signal</h4>
-        <p>When w=0, span length L has no preference gradient in the current model then only the budget constraint acts on it. The weighted mean drives L to its lower bound. Adding a coverage preference objective would give L a meaningful role.</p>
+        <h4>Several objectives are simplified proxies.</h4>
+        <p>Noise/vibration, construction disturbance, sea-view openness, and marine ecology are represented through compact mathematical functions rather than through detailed technical simulations. This makes the model usable for optimisation, but it also limits physical precision.</p>
       </div>
       <div class="critique-item">
-        <h4>Mixed scoring in comparison table</h4>
-        <p>MCDA alternatives scored through Tetra SDM human ratings; a-priori optima scored through mathematical functions. Both are legitimate but not directly comparable without the correction described in Section 8.1.</p>
+        <h4>The cost model is simplified.</h4>
+        <p>Construction cost is represented through a smooth analytical function. Real tunnel costs may include threshold effects, fixed-cost jumps, local ground risks, and procurement effects that are not fully captured here.</p>
+      </div>
+      <div class="critique-item">
+        <h4>The optimisation is heuristic.</h4>
+        <p>The genetic algorithm identifies strong solutions, but it does not guarantee the global optimum. The results should therefore be read as robust candidate optima within the explored design space.</p>
       </div>
 
     </div>
 
     <h3>8.8 Ethical Dimensions</h3>
-    <p><strong>Distributional asymmetry within BRH.</strong> The BRH group is modelled as homogeneous, but five-star hotel operators and daily beach food vendors are assigned equal intra-group weight. Both face construction disruption, but the hotel has legal resources to advocate while the vendor faces total livelihood disruption with no recourse. The model understates harm to the most economically vulnerable.</p>
-    <p><strong>Procedural justice.</strong> The four curated alternatives were narrowed before public consultation, excluding shaft setback configurations (d≈98 m) the model identifies as significantly preferable. If affected communities were only consulted on pre-narrowed options, they were denied meaningful input into design decisions that substantially affect them.</p>
-    <p><strong>Irreversibility.</strong> The model treats reclamation as a finite preference cost that can be traded against other values. Permanent coastal reclamation is irreversible. Future generations cannot recover a lost coastline. A ratio preference scale cannot capture this qualitative distinction — it is a genuine boundary on the model's scope as a decision-support tool.</p>
-    <p><strong>AAI's dual role.</strong> AAI is simultaneously a stakeholder (preference weight ~17.6% normalised) and a regulatory authority with coercive power to render the Bridge infeasible. This asymmetry of one stakeholder can unilaterally reshape the feasible set and is not representable in the preference model. The MCDA's claim that A1 leads A3 by one preference point should acknowledge that AAI's regulatory position, not balanced preferences, is the decisive factor.</p>
+    <p>The ethical perspective that best matches the preference-based engineering design methodology in this course is utilitarianism. The reason is that the methodology aims to identify the design with the highest overall group preference, which is close to the utilitarian idea of selecting the option that produces the greatest overall good. In this project, that logic is visible in both the MCDA and the optimisation models, where different stakeholder interests are aggregated to find the most preferred solution direction.</p>
+    <p>The four curated alternatives were narrowed before public consultation, excluding shaft setback configurations (d≈98 m) the model identifies as significantly preferable. If affected communities were only consulted on pre-narrowed options, they were denied meaningful input into design decisions that substantially affect them.</p>
+    <p>The model treats reclamation as a finite preference cost that can be traded against other values. Permanent coastal reclamation is irreversible. Future generations cannot recover a lost coastline. A ratio preference scale cannot capture this qualitative distinction — it is a genuine boundary on the model's scope as a decision-support tool.</p>
+    <p>AAI is simultaneously a stakeholder (preference weight ~17.6% normalised) and a regulatory authority with coercive power to render the Bridge infeasible. This asymmetry of one stakeholder can unilaterally reshape the feasible set and is not representable in the preference model. The MCDA's claim that A1 leads A3 by one preference point should acknowledge that AAI's regulatory position, not balanced preferences, is the decisive factor.</p>
 
     <div class="reflection-item">
       <h3>8.9 Integrated Conspection</h3>
       <p>The PED methodology works as intended at the level of structural type selection. The a-posteriori Tetra MCDA (eight scenarios) and all three paradigms of the a-priori optimisation (two model configurations) independently converge on the bored tunnel as the dominant structural choice. This cross-method convergence is strong evidence the tunnel recommendation is robust rather than an artefact of any particular modelling choice.</p>
-      <p>The methodology's most significant contribution at the Section 6 level is not confirming the tunnel that the DPR consultant already recommended it, but revealing that the Tetra optimum at d=98.3 m, n=5 lanes achieves P_group=72.1, outperforming A1's 69.1. This configuration was invisible to the a-posteriori analysis because shaft setback was never treated as a design variable. The a-priori model reveals a 3-point preference improvement by exploring a dimension the curated alternatives ignored.</p>
-      <p>The 2×2 model's Pareto front provides the deepest analytical underpinning: zero reclamation is always Pareto-non-dominated as a structural proof independent of calibration uncertainty or weight choice. The minmax and Tetra paradigm divergence is a direct representation of two normative positions on group decision-making. The O4 correction from the original formulation to the physically coherent one is both a methodological lesson and a substantive result and without it, the shaft setback finding disappears.</p>
-      <p>The methodology is appropriately silent on the political dimensions: AAI's dual role, procedural legitimacy of the curated alternative set, distributional asymmetry within BRH, and the irreversibility of coastal reclamation. These mark the correct boundary between mathematical optimisation as a decision-support tool and political deliberation as the ultimate decision-making process. The value of the open glass-box model is precisely that this boundary is visible and discussable rather than hidden inside an opaque institutional process.</p>
+      <p>However, the project also showed that the method is not purely utilitarian. The Bridge performed strongly in the stakeholder-preference analysis, but it could not remain the final option once the AAI airspace restriction was treated as a hard constraint. This introduces a clear deontological element: some requirements must be respected regardless of how attractive an alternative appears in the preference model. In other words, the preferred design must not only maximise stakeholder benefit, but also comply with non-negotiable rules and feasibility conditions.</p>
+      <p>There is also a rights-based dimension in this case. Juhu Beach is not an empty project corridor; it is a public space with recreational, social, and livelihood value. This means the analysis cannot focus only on corridor efficiency. It must also respect the legitimate claims of beach users, residents, and local stakeholders who are affected by construction disturbance, access loss, and long-term changes to the seafront. A rights-based view therefore strengthens the importance of BRH-related objectives in the model.</p>
+      <p>Finally, a virtue ethics perspective is relevant in the way the model was developed. The project became stronger when the model was revised honestly after the feasible design space changed. Once the Bridge was excluded, reclamation width could no longer remain an active variable, and the optimisation had to shift toward tunnel-specific design choices. This reflects prudence and intellectual honesty in modelling, which are central virtues in responsible engineering design.</p>
     </div>
   </div>
 </section>
