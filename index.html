@@ -881,7 +881,7 @@
   </div>
 
 </div>
-    <h3>Three Optimisation Paradigms</h3>
+    <h3>Two Optimisation Paradigms</h3>
     <div class="paradigm-compare">
       <div class="paradigm-card">
         <div class="pc-label">Equitable</div>
@@ -910,29 +910,30 @@
 
     <h3>Equal-Weight Case</h3>
     <p>The model is first run under equal stakeholder weighting as a neutral baseline, where BMC, BRH, and ENV each receive a weight of 0.333.</p>
+    <p>The purpose of this optimised preference curve is to show where the optimiser is rewarded and where it is penalised. Throughput and sea-view openness gain preference as they increase, while cost, noise and vibration, construction disturbance, and marine ecology disturbance lose preference as they increase. The shape of each curve matters. Steep sections indicate ranges where even a small design change has a strong effect on stakeholder preference, while flatter sections show where further improvement adds relatively little value. In other words, the curves do not just rescale the objectives instead they express how strongly stakeholders react to change in each objective.</p>
 
     <img src="optm result equal weight.png" alt="Equal weight optimisation result" style="width:100%;height:auto;display:block;margin:20px 0 0;">
-    <p style="font-size:13px;color:#6b6b6b;border-left:3px solid #b07d3a;padding:6px 14px;background:#f8f6f1;margin:0 0 24px;">Optimisation result under equal stakeholder weighting — preference scores across all six objectives at the identified optimal configuration.</p>
+    <p style="font-size:13px;color:#6b6b6b;border-left:3px solid #b07d3a;padding:6px 14px;background:#f8f6f1;margin:0 0 24px;">Optimisation result under equal stakeholder weighting and preference scores across all six objectives at the identified optimal configuration.</p>
 
 
     <div class="chart-card-full" style="margin-top:28px;">
-      <h3>GA Minmax — Equal Weights Preference Score Breakdown</h3>
+      <h3>GA Minmax - Equal Weights Preference Score Breakdown</h3>
       <p class="chart-sub">Individual objective scores at the minmax optimal configuration under equal stakeholder weights</p>
       <canvas id="minmaxEqualScores" height="70"></canvas>
     </div>
     <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border);">
-      <p style="margin-bottom:12px;">Under equal weighting, the minmax paradigm distributes scores across a tighter range, lifting the weakest objective as high as possible. No single stakeholder is left severely behind, but the aggregate P_group is lower than the Tetra result by design.</p>
+      <p style="margin-bottom:12px;">Under equal weighting, the minmax solution should be read as the most balanced compromise rather than the highest-scoring design overall. The algorithm works by improving the weakest-performing objective as much as possible, so the final profile is more even across the six objectives. This means that no stakeholder perspective is allowed to fall too far behind, even if this prevents the optimiser from achieving a higher overall group score. The chart therefore represents a fairer but more conservative solution, where the weakest objective is protected rather than sacrificed for gains elsewhere.</p>
       <p>The model prefers a tunnel configuration with high capacity, large shaft setback, and deep alignment, indicating that reducing beach-side impact remains more valuable than minimising cost alone when all groups are treated equally.</p>
     </div>
 
     <div class="chart-card-full" style="margin-top:28px;">
-      <h3>GA Tetra — Equal Weights Preference Score Breakdown</h3>
+      <h3>GA Tetra - Equal Weights Preference Score Breakdown</h3>
       <p class="chart-sub">Individual objective scores at the Tetra optimal configuration under equal stakeholder weights</p>
       <canvas id="tetraEqualScores" height="70"></canvas>
     </div>
     <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border);">
-      <p style="margin-bottom:12px;">The Tetra result shows five objectives scoring near their maximum while the cost objective absorbs the trade-off. The combined BRH and ENV weight of 0.667 overwhelmingly rewards configurations with large shaft setback and deep alignment, even at the cost of a low BMC cost score.</p>
-      <p>This confirms that under equal weighting, reducing beach-side and environmental impact is consistently preferred over minimising construction cost across all aggregation approaches.</p>
+      <p style="margin-bottom:12px;">Under equal weighting, the Tetra result should be interpreted as the design that maximises total group preference. Unlike minmax, it is willing to accept a weaker score on one objective if that produces stronger gains across the others. In the chart, this usually appears as a lower cost-preference score alongside much stronger BRH and ENV-related performance. The result shows that when all stakeholder groups are given equal influence, the optimiser is prepared to accept a cost penalty in order to achieve a much better overall performance in beach-side and environmental objectives.</p>
+      
     </div>
 
     <!-- WEIGHT CHANGE TRANSITION -->
@@ -970,23 +971,23 @@
 
 
     <div class="chart-card-full" style="margin-top:28px;">
-      <h3>GA Minmax — Realistic Weights Preference Score Breakdown</h3>
+      <h3>GA Minmax - Realistic Weights Preference Score Breakdown</h3>
       <p class="chart-sub">Individual objective scores at the minmax optimal configuration under realistic stakeholder weights</p>
       <canvas id="minmaxRealScores" height="70"></canvas>
     </div>
     <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border);">
-      <p style="margin-bottom:12px;">Under realistic weights, the minmax paradigm again lifts the weakest objective as high as possible. The binding floor shifts slightly compared to the equal-weight case because BMC now carries a marginally higher share of the aggregate, making cost a tighter constraint on the optimiser's movement.</p>
-      <p>The result confirms that the realistic weight adjustment does not fundamentally change which design region the minmax paradigm selects — the same broad configuration of large setback and deep alignment remains optimal.</p>
+      <p style="margin-bottom:12px;">After switching to the realistic stakeholder weights, the minmax result changes only slightly. BMC-related objectives become somewhat more influential, so cost and capacity gain slightly more importance, but the overall design direction remains almost the same. This is the main point the chart should communicate: the balanced solution is robust. Even after adjusting the weights to reflect the real project context, the model still converges toward the same general tunnel configuration rather than shifting to a fundamentally different design.</p>
+      
     </div>
 
     <div class="chart-card-full" style="margin-top:28px;">
-      <h3>GA Tetra — Realistic Weights Preference Score Breakdown</h3>
+      <h3>GA Tetra - Realistic Weights Preference Score Breakdown</h3>
       <p class="chart-sub">Individual objective scores at the Tetra optimal configuration under realistic stakeholder weights</p>
       <canvas id="tetraRealScores" height="70"></canvas>
     </div>
     <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border);">
-      <p style="margin-bottom:12px;">The Tetra result under realistic weights shows a profile broadly similar to the equal-weight case. With the combined BRH and ENV weight at 0.65, the aggregate still overwhelmingly rewards configurations with large shaft setback and deep alignment, even at the cost of a lower BMC cost score.</p>
-      <p>The preferred design region does not shift substantially between the two weight scenarios, confirming that the optimisation outcome is robust to moderate changes in stakeholder influence rather than being sensitive to any particular weight assumption.</p>
+      <p style="margin-bottom:12px;">The Tetra result under realistic weighting is also very close to the equal-weight outcome. This indicates that the optimum is driven less by small changes in stakeholder power and more by the structure of the design problem itself. The preferred region still combines high capacity, large shaft setback, and deep alignment. The chart therefore shows that the solution is not highly sensitive to moderate weight adjustments. What changes is the relative emphasis in the objective scores, not the overall direction of the design.</p>
+      
     </div>
 
     <h3>Main Takeaway</h3>
