@@ -756,17 +756,184 @@
 <img src="preference function 4by6.png" alt="Preference functions for all six objectives — Mumbai Coastal Road Tunnel 4×6 Model" style="width:100%;height:auto;display:block;margin:20px 0 0;">
 <p style="font-size:13px;color:#6b6b6b;border-left:3px solid #b07d3a;padding:6px 14px;background:#f8f6f1;margin-top:0;">Preference curves for all six objectives. O1 (throughput) and O4 (sea-view) are maximised; O2 (cost), O3 (surface noise), O5 (disturbance), and O6 (marine ecology) are inverted — lower raw scores yield higher preference.</p>
 
+
     <h3>Weights and Constraints</h3>
 
-    <h4>Stakeholder weights</h4>
-    <p>The three preference-bearing stakeholder groups receive global weights reflecting their relative claims on the design outcome. BMC and BRH are weighted equally at 0.30 each. BMC holds institutional project authority while BRH holds the largest public legitimacy claim on the affected asset, and no methodological basis exists for treating one as more important than the other in the absence of a formal political decision. ENV receives 0.25, reflecting its statutory regulatory role which is significant but narrower in scope than the other two groups. The Airport Authority of India is not assigned a preference weight at all — its compliance requirement is binary and non-negotiable, making it a hard engineering constraint rather than a tradeable preference.</p>
+<h4>Stakeholder Weights</h4>
+<p>Two weight scenarios are applied to test the robustness of the optimisation result across different assumptions about stakeholder importance.</p>
 
-    <h4>Sub-criterion weights and normalisation</h4>
-    <p>Within each stakeholder group, the two criteria are weighted to reflect their relative importance. For BMC, throughput carries 0.55 and cost carries 0.45 where capacity is the primary mandate of the project, but cost discipline is a close secondary concern. For BRH, beach preservation carries 0.60 and sea-view carries 0.40 where permanent beach loss is the dominant public concern, while sea-view obstruction is important but recoverable in part. For ENV, reclamation footprint and construction disturbance are weighted equally at 0.50 each.</p>
-    <p>Multiplying the global and sub-criterion weights produces effective weights that sum to 0.85 rather than 1.0 because AAI's share is handled as a constraint, not a weight. The GA aggregator requires weights summing to exactly 1.0, so all effective weights are divided by 0.85 before being passed to the objective function. This preserves every relative priority exactly while satisfying the technical requirement.</p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0 28px;">
 
-<h4>Design constraints</h4>
-<p>Five constraints bound the feasible design space. The lane count lower bound (at least three lanes per direction) comes directly from the MCRP project mandate and is encoded as a simple inequality on the lane count variable. Span length and reclamation width limits are enforced through variable bounds. The AAI Obstacle Limitation Surface constraint applies only to bridge or elevated-structure configurations are defined as those where reclamation width exceeds 30 m and requires the modelled deck height to stay below 18 m above Mean Sea Level. This is encoded as a smooth product function that equals zero for all tunnel solutions, activating only for bridge configurations. The budget constraint requires that total construction cost ia unit cost per kilometre multiplied by span length and does not exceed INR 4,200 crore for Section 6.</p>
+  <div style="border:1px solid #ddd8cf;background:#fff;overflow:hidden;">
+    <div style="background:#0f2d48;padding:10px 16px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:3px;">Scenario A</div>
+      <div style="font-size:15px;font-weight:600;color:#e8d5b0;">Equal Weights</div>
+    </div>
+    <div style="padding:0;">
+      <table style="width:100%;border-collapse:collapse;font-size:13px;">
+        <thead>
+          <tr>
+            <th style="background:#f4f1eb;padding:8px 14px;text-align:left;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#6b6b6b;font-weight:600;">Stakeholder</th>
+            <th style="background:#f4f1eb;padding:8px 14px;text-align:right;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#6b6b6b;font-weight:600;">Weight</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid #ede9e1;">
+            <td style="padding:9px 14px;color:#3a3a3a;">BMC / Transport Planners</td>
+            <td style="padding:9px 14px;text-align:right;font-weight:700;color:#0f2d48;">0.333</td>
+          </tr>
+          <tr style="border-bottom:1px solid #ede9e1;">
+            <td style="padding:9px 14px;color:#3a3a3a;">BRH / Beach Users</td>
+            <td style="padding:9px 14px;text-align:right;font-weight:700;color:#0f2d48;">0.333</td>
+          </tr>
+          <tr style="border-bottom:1px solid #ede9e1;">
+            <td style="padding:9px 14px;color:#3a3a3a;">ENV / Coastal Stakeholders</td>
+            <td style="padding:9px 14px;text-align:right;font-weight:700;color:#0f2d48;">0.333</td>
+          </tr>
+          <tr>
+            <td style="padding:9px 14px;color:#3a3a3a;">AAI</td>
+            <td style="padding:9px 14px;text-align:right;font-size:11px;color:#888;">Hard constraint</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div style="border:1px solid #ddd8cf;background:#fff;overflow:hidden;">
+    <div style="background:#0f2d48;padding:10px 16px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:3px;">Scenario B</div>
+      <div style="font-size:15px;font-weight:600;color:#e8d5b0;">Realistic Weights</div>
+    </div>
+    <div style="padding:0;">
+      <table style="width:100%;border-collapse:collapse;font-size:13px;">
+        <thead>
+          <tr>
+            <th style="background:#f4f1eb;padding:8px 14px;text-align:left;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#6b6b6b;font-weight:600;">Stakeholder</th>
+            <th style="background:#f4f1eb;padding:8px 14px;text-align:right;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#6b6b6b;font-weight:600;">Weight</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid #ede9e1;">
+            <td style="padding:9px 14px;color:#3a3a3a;">BMC / Transport Planners</td>
+            <td style="padding:9px 14px;text-align:right;font-weight:700;color:#0f2d48;">0.35</td>
+          </tr>
+          <tr style="border-bottom:1px solid #ede9e1;">
+            <td style="padding:9px 14px;color:#3a3a3a;">BRH / Beach Users</td>
+            <td style="padding:9px 14px;text-align:right;font-weight:700;color:#0f2d48;">0.35</td>
+          </tr>
+          <tr style="border-bottom:1px solid #ede9e1;">
+            <td style="padding:9px 14px;color:#3a3a3a;">ENV / Coastal Stakeholders</td>
+            <td style="padding:9px 14px;text-align:right;font-weight:700;color:#0f2d48;">0.30</td>
+          </tr>
+          <tr>
+            <td style="padding:9px 14px;color:#3a3a3a;">AAI</td>
+            <td style="padding:9px 14px;text-align:right;font-size:11px;color:#888;">Hard constraint</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<h4>Sub-Criterion Weights</h4>
+<div style="overflow-x:auto;margin:16px 0 28px;">
+  <table style="width:100%;border-collapse:collapse;font-size:13px;">
+    <thead>
+      <tr>
+        <th style="background:#0f2d48;color:rgba(255,255,255,0.75);padding:9px 14px;text-align:left;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;font-weight:600;">Stakeholder</th>
+        <th style="background:#0f2d48;color:rgba(255,255,255,0.75);padding:9px 14px;text-align:left;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;font-weight:600;">Objective</th>
+        <th style="background:#0f2d48;color:rgba(255,255,255,0.75);padding:9px 14px;text-align:right;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;font-weight:600;">Sub-weight</th>
+        <th style="background:#0f2d48;color:rgba(255,255,255,0.75);padding:9px 14px;text-align:left;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;font-weight:600;">Rationale</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom:1px solid #ede9e1;">
+        <td style="padding:9px 14px;color:#3a3a3a;" rowspan="2">BMC</td>
+        <td style="padding:9px 14px;color:#3a3a3a;">O1 — Traffic Throughput</td>
+        <td style="padding:9px 14px;text-align:right;font-weight:700;color:#0f2d48;">0.55</td>
+        <td style="padding:9px 14px;color:#6b6b6b;font-size:12px;">Capacity is the primary mandate</td>
+      </tr>
+      <tr style="border-bottom:1px solid #ede9e1;">
+        <td style="padding:9px 14px;color:#3a3a3a;">O2 — Construction Cost</td>
+        <td style="padding:9px 14px;text-align:right;font-weight:700;color:#0f2d48;">0.45</td>
+        <td style="padding:9px 14px;color:#6b6b6b;font-size:12px;">Cost discipline is a close secondary concern</td>
+      </tr>
+      <tr style="border-bottom:1px solid #ede9e1;">
+        <td style="padding:9px 14px;color:#3a3a3a;" rowspan="2">BRH</td>
+        <td style="padding:9px 14px;color:#3a3a3a;">O3 — Surface Noise / Vibration</td>
+        <td style="padding:9px 14px;text-align:right;font-weight:700;color:#0f2d48;">0.40</td>
+        <td style="padding:9px 14px;color:#6b6b6b;font-size:12px;">Direct daily nuisance to residents</td>
+      </tr>
+      <tr style="border-bottom:1px solid #ede9e1;">
+        <td style="padding:9px 14px;color:#3a3a3a;">O4 — Sea-View Openness</td>
+        <td style="padding:9px 14px;text-align:right;font-weight:700;color:#0f2d48;">0.60</td>
+        <td style="padding:9px 14px;color:#6b6b6b;font-size:12px;">Dominant public concern for beach users</td>
+      </tr>
+      <tr style="border-bottom:1px solid #ede9e1;">
+        <td style="padding:9px 14px;color:#3a3a3a;" rowspan="2">ENV</td>
+        <td style="padding:9px 14px;color:#3a3a3a;">O5 — Construction Disturbance</td>
+        <td style="padding:9px 14px;text-align:right;font-weight:700;color:#0f2d48;">0.50</td>
+        <td style="padding:9px 14px;color:#6b6b6b;font-size:12px;">Temporary but significant coastal impact</td>
+      </tr>
+      <tr>
+        <td style="padding:9px 14px;color:#3a3a3a;">O6 — Marine Ecology Disturbance</td>
+        <td style="padding:9px 14px;text-align:right;font-weight:700;color:#0f2d48;">0.50</td>
+        <td style="padding:9px 14px;color:#6b6b6b;font-size:12px;">Permanent ecological footprint equally weighted</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h4>Design Constraints</h4>
+<div style="display:flex;flex-direction:column;gap:10px;margin:16px 0 28px;">
+
+  <div style="display:grid;grid-template-columns:28px 1fr;gap:14px;align-items:flex-start;padding:14px 18px;border:1px solid #ddd8cf;background:#fff;">
+    <div style="width:28px;height:28px;border-radius:50%;background:#0f2d48;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">C1</div>
+    <div>
+      <div style="font-size:12px;font-weight:700;color:#0f2d48;margin-bottom:3px;">Minimum Lane Count</div>
+      <div style="font-family:monospace;font-size:12px;background:#f4f1eb;padding:4px 10px;display:inline-block;color:#0f2d48;margin-bottom:5px;">n ≥ 3 lanes per direction</div>
+      <div style="font-size:13px;color:#6b6b6b;">MCRP project mandate minimum for meaningful corridor decongestion benefit.</div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:28px 1fr;gap:14px;align-items:flex-start;padding:14px 18px;border:1px solid #ddd8cf;background:#fff;">
+    <div style="width:28px;height:28px;border-radius:50%;background:#0f2d48;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">C2</div>
+    <div>
+      <div style="font-size:12px;font-weight:700;color:#0f2d48;margin-bottom:3px;">Tunnelled Frontage Length</div>
+      <div style="font-family:monospace;font-size:12px;background:#f4f1eb;padding:4px 10px;display:inline-block;color:#0f2d48;margin-bottom:5px;">1.8 km ≤ L&#8346; ≤ 3.2 km</div>
+      <div style="font-size:13px;color:#6b6b6b;">Lower bound covers the minimum Juhu Beach frontage; upper bound is the full Section 6 length.</div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:28px 1fr;gap:14px;align-items:flex-start;padding:14px 18px;border:1px solid #ddd8cf;background:#fff;">
+    <div style="width:28px;height:28px;border-radius:50%;background:#0f2d48;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">C3</div>
+    <div>
+      <div style="font-size:12px;font-weight:700;color:#0f2d48;margin-bottom:3px;">Shaft Setback &amp; Tunnel Depth Bounds</div>
+      <div style="font-family:monospace;font-size:12px;background:#f4f1eb;padding:4px 10px;display:inline-block;color:#0f2d48;margin-bottom:5px;">15 m ≤ d ≤ 120 m &nbsp;&nbsp; 10 m ≤ z ≤ 40 m</div>
+      <div style="font-size:13px;color:#6b6b6b;">Bounds reflect physical and geotechnical limits on shaft placement and tunnel depth in the Section 6 zone.</div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:28px 1fr;gap:14px;align-items:flex-start;padding:14px 18px;border:1px solid #ddd8cf;background:#fff;">
+    <div style="width:28px;height:28px;border-radius:50%;background:#c84a3a;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">C4</div>
+    <div>
+      <div style="font-size:12px;font-weight:700;color:#c84a3a;margin-bottom:3px;">AAI Obstacle Limitation Surface — Hard Constraint</div>
+      <div style="font-family:monospace;font-size:12px;background:#fdecea;padding:4px 10px;display:inline-block;color:#c84a3a;margin-bottom:5px;">deck height ≤ 18 m MSL (bridge configurations only)</div>
+      <div style="font-size:13px;color:#6b6b6b;">Applies only when shaft setback exceeds 30 m, triggering bridge-type geometry. The tunnel alternative satisfies this unconditionally as it runs fully underground.</div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:28px 1fr;gap:14px;align-items:flex-start;padding:14px 18px;border:1px solid #ddd8cf;background:#fff;">
+    <div style="width:28px;height:28px;border-radius:50%;background:#0f2d48;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">C5</div>
+    <div>
+      <div style="font-size:12px;font-weight:700;color:#0f2d48;margin-bottom:3px;">Budget Cap</div>
+      <div style="font-family:monospace;font-size:12px;background:#f4f1eb;padding:4px 10px;display:inline-block;color:#0f2d48;margin-bottom:5px;">f₂(n,d,z,L&#8346;) × L&#8346; ≤ INR 4,200 Crore</div>
+      <div style="font-size:13px;color:#6b6b6b;">Total Section 6 construction cost must not exceed the project budget envelope. Unit cost multiplied by tunnelled length creates a non-linear interaction between variables.</div>
+    </div>
+  </div>
+
+</div>
     <h3>Three Optimisation Paradigms</h3>
     <div class="paradigm-compare">
       <div class="paradigm-card">
