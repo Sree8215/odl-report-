@@ -539,61 +539,63 @@
 
   </div>
 
-</div>
+<div class="container">
 
- <p>After the MCDA and the application of the AAI airspace constraint, the feasible solution space narrows to tunnel-based configurations. The preliminary 2×2 model is therefore introduced as the first open glass-box optimisation step to explore the key remaining trade-off within this tunnel-feasible space. Rather than modelling the full problem immediately, the 2×2 formulation focuses on the main continuous conflict between reducing project cost and limiting beach-side construction impact.</p>
+  <p>After the MCDA and the application of the AAI airspace constraint, the feasible solution space narrows to tunnel-based configurations. The preliminary 2×2 model is therefore introduced as the first open glass-box optimisation step to explore the key remaining trade-off within this tunnel-feasible space. Rather than modelling the full problem immediately, the 2×2 formulation focuses on the main continuous conflict between reducing project cost and limiting beach-side construction impact.</p>
 
-<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin:28px 0;">
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin:28px 0;">
 
-  <div style="border:1px solid #ddd8cf;background:#fff;overflow:hidden;">
-    <div style="background:#0f2d48;padding:10px 16px;">
-      <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:2px;">Stakeholders × Objectives</div>
-      <div style="font-size:14px;font-weight:600;color:#e8d5b0;">BMC vs BRH / ENV</div>
-    </div>
-    <div style="padding:14px 16px;font-size:13px;color:#4a4a4a;line-height:1.7;">
-      <p style="margin-bottom:10px;">From the perspective of <strong>BMC</strong>, the main objective is to keep the tunnel solution financially realistic.</p>
-      <p style="margin:0;">From the perspective of <strong>BRH/ENV</strong>, the main concern is to reduce the disturbance caused near the beach during construction.</p>
-    </div>
-  </div>
-
-  <div style="border:1px solid #ddd8cf;background:#fff;overflow:hidden;">
-    <div style="background:#0f2d48;padding:10px 16px;">
-      <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:2px;">Design Variables</div>
-      <div style="font-size:14px;font-weight:600;color:#e8d5b0;">2 Variables</div>
-    </div>
-    <div style="padding:14px 16px;font-size:13px;color:#4a4a4a;line-height:1.7;">
-      <div style="margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #ede9e1;">
-        <div style="font-family:monospace;font-size:14px;font-weight:700;color:#b07d3a;margin-bottom:3px;">d &isin; [15, 120] m</div>
-        <div>Shaft setback distance from the beach edge. Larger setback reduces beach disturbance but increases cost.</div>
+    <div style="border:1px solid #ddd8cf;background:#fff;overflow:hidden;">
+      <div style="background:#0f2d48;padding:10px 16px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:2px;">Stakeholders × Objectives</div>
+        <div style="font-size:14px;font-weight:600;color:#e8d5b0;">BMC vs BRH / ENV</div>
       </div>
-      <div>
-        <div style="font-family:monospace;font-size:14px;font-weight:700;color:#b07d3a;margin-bottom:3px;">z &isin; [10, 40] m</div>
-        <div>Tunnel depth. A deeper tunnel reduces surface nuisance but increases tunnelling cost.</div>
+      <div style="padding:14px 16px;font-size:13px;color:#4a4a4a;line-height:1.7;">
+        <p style="margin-bottom:10px;">From the perspective of <strong>BMC</strong>, the main objective is to keep the tunnel solution financially realistic.</p>
+        <p style="margin:0;">From the perspective of <strong>BRH/ENV</strong>, the main concern is to reduce the disturbance caused near the beach during construction.</p>
       </div>
     </div>
-  </div>
 
-  <div style="border:1px solid #ddd8cf;background:#fff;overflow:hidden;">
-    <div style="background:#0f2d48;padding:10px 16px;">
-      <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:2px;">Objectives</div>
-      <div style="font-size:14px;font-weight:600;color:#e8d5b0;">Cost &amp; Disturbance</div>
-    </div>
-    <div style="padding:14px 16px;font-size:13px;color:#4a4a4a;line-height:1.7;">
-      <div style="margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #ede9e1;">
-        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#1a4a72;margin-bottom:6px;">O1 — Construction Cost (BMC)</div>
-        <div style="font-family:monospace;font-size:12px;background:#f4f1eb;padding:8px 10px;color:#0f2d48;line-height:1.8;">
-          min f&#8321;(d,z) =<br>0.8d + 12(z&minus;10)L<sub>t</sub>
+    <div style="border:1px solid #ddd8cf;background:#fff;overflow:hidden;">
+      <div style="background:#0f2d48;padding:10px 16px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:2px;">Design Variables</div>
+        <div style="font-size:14px;font-weight:600;color:#e8d5b0;">2 Variables</div>
+      </div>
+      <div style="padding:14px 16px;font-size:13px;color:#4a4a4a;line-height:1.7;">
+        <div style="margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #ede9e1;">
+          <div style="font-family:monospace;font-size:14px;font-weight:700;color:#b07d3a;margin-bottom:3px;">d &isin; [15, 120] m</div>
+          <div>Shaft setback distance from the beach edge. Larger setback reduces beach disturbance but increases cost.</div>
         </div>
-        <div style="margin-top:6px;font-size:12px;color:#6b6b6b;">where L<sub>t</sub> is the tunnelled section length, fixed at the Section 6 reference value.</div>
-      </div>
-      <div>
-        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#1a5c30;margin-bottom:6px;">O2 — Construction Disturbance (BRH/ENV)</div>
-        <div style="font-family:monospace;font-size:12px;background:#f4f1eb;padding:8px 10px;color:#0f2d48;line-height:1.8;">
-          min f&#8322;(d,z) =<br>10[0.7(1&minus;d&#770;) + 0.3(1&minus;z&#770;)]
+        <div>
+          <div style="font-family:monospace;font-size:14px;font-weight:700;color:#b07d3a;margin-bottom:3px;">z &isin; [10, 40] m</div>
+          <div>Tunnel depth. A deeper tunnel reduces surface nuisance but increases tunnelling cost.</div>
         </div>
-        <div style="margin-top:6px;font-size:12px;color:#6b6b6b;">d&#770; = (d&minus;15)/(120&minus;15) &nbsp;&nbsp; z&#770; = (z&minus;10)/(40&minus;10). The heavier weight on d reflects that shaft proximity to the beach is the dominant driver of direct user disturbance.</div>
       </div>
     </div>
+
+    <div style="border:1px solid #ddd8cf;background:#fff;overflow:hidden;">
+      <div style="background:#0f2d48;padding:10px 16px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:2px;">Objectives</div>
+        <div style="font-size:14px;font-weight:600;color:#e8d5b0;">Cost &amp; Disturbance</div>
+      </div>
+      <div style="padding:14px 16px;font-size:13px;color:#4a4a4a;line-height:1.7;">
+        <div style="margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #ede9e1;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#1a4a72;margin-bottom:6px;">O1 — Construction Cost (BMC)</div>
+          <div style="font-family:monospace;font-size:12px;background:#f4f1eb;padding:8px 10px;color:#0f2d48;line-height:1.8;">
+            min f&#8321;(d,z) =<br>0.8d + 12(z&minus;10)L<sub>t</sub>
+          </div>
+          <div style="margin-top:6px;font-size:12px;color:#6b6b6b;">where L<sub>t</sub> is the tunnelled section length, fixed at the Section 6 reference value.</div>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#1a5c30;margin-bottom:6px;">O2 — Construction Disturbance (BRH/ENV)</div>
+          <div style="font-family:monospace;font-size:12px;background:#f4f1eb;padding:8px 10px;color:#0f2d48;line-height:1.8;">
+            min f&#8322;(d,z) =<br>10[0.7(1&minus;d&#770;) + 0.3(1&minus;z&#770;)]
+          </div>
+          <div style="margin-top:6px;font-size:12px;color:#6b6b6b;">d&#770; = (d&minus;15)/(120&minus;15) &nbsp;&nbsp; z&#770; = (z&minus;10)/(40&minus;10). The heavier weight on d reflects that shaft proximity to the beach is the dominant driver of direct user disturbance.</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
 </div>
